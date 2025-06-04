@@ -10,7 +10,7 @@ This GitHub does not contain the raw data we used and obtained (with some small 
 # Introduction
 Above, I've portrayed the pipeline in which the Klebsormidiophyceae Phylogenomics Project was executed.
 
-## 1. RNA Seq Data
+## 0. RNA Seq Data
 This was either obtained from the SRA database (see preprint under citing below). Or obtained in-house.
 All in-house strains were cultivated in 3NBBM (medium [26a](https://doi.org/10.1111/j.1438-8677.1997.tb00659.x)) at 18°C under full-spectrum fluorescent lamps (25-35 µmol photons m<sup>−2</sup> s<sup>−1</sup>; 14:10h light-dark cycle). <br/>
 After 21 days, 50ml of the culture was centrifuged for 5 min at 20°C at 11000 rpm. The supernatant was removed, and the pellet was transferred into the Tenbroek tissue homogenizer and manually disrupted for 10 min on ice.
