@@ -4,7 +4,7 @@ This GitHub does not contain the raw data we used and obtained (with some small 
 
 
 # Workflow
-![alt text](Sources/Images/PhyloRSeqpp_Flow_1500.png?raw=True "Pipeline")
+![alt text](Sources/Images/PhyloRSeqpp_Flow_1000.png?raw=True "Pipeline")
 
 
 # Introduction
