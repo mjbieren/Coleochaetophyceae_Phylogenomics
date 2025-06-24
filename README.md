@@ -1,6 +1,6 @@
-# Phylogenomics klebsormidiophyceae
-This is an overview of all (novel) tools and scripts we used in the Klebsormidiophyceae Phylogenomics Project.
-This GitHub does not contain the raw data we used and obtained (with some small exceptions) during our Klebsormidiophyceae Phylogenomic Project. For that, we would like to refer you to our Zenodo Link: https://zenodo.org/records/10058795
+# Phylogenomics unveil recent origin of morphological complexity in Coleochaetophyceae Dataset
+This is an overview of all (novel) tools and scripts we used in the Coleochaetophyceae Phylogenomics Project.
+This GitHub does not contain the raw data we used and obtained (with some small exceptions) during our Coleochaetophyceae Phylogenomic Project. For that, we would like to refer you to our Zenodo Link: https://doi.org/10.5281/zenodo.15376262
 
 
 # Workflow
@@ -8,20 +8,20 @@ This GitHub does not contain the raw data we used and obtained (with some small 
 
 
 # Introduction
-Above, I've portrayed the pipeline in which the Klebsormidiophyceae Phylogenomics Project was executed.
+Above, I've portrayed the pipeline in which the Coleochaetophyceae Phylogenomics Project was executed.
 
 ## 0. RNA Seq Data
-This was either obtained from the SRA database (see preprint under citing below). Or obtained in-house.
+This was either obtained from the SRA database . Or obtained in-house.
 All in-house strains were cultivated in 3NBBM (medium [26a](https://doi.org/10.1111/j.1438-8677.1997.tb00659.x)) at 18°C under full-spectrum fluorescent lamps (25-35 µmol photons m<sup>−2</sup> s<sup>−1</sup>; 14:10h light-dark cycle). <br/>
-After 21 days, 50ml of the culture was centrifuged for 5 min at 20°C at 11000 rpm. The supernatant was removed, and the pellet was transferred into the Tenbroek tissue homogenizer and manually disrupted for 10 min on ice.
+After 6 weeks, 50ml of the culture was centrifuged for 5 min at 20°C at 11000 rpm. The supernatant was removed, and the pellet was transferred into the Tenbroek tissue homogenizer and manually disrupted for 10 min on ice.
 Further Extraction was then done with the RNA from the Spectrum™ Plant Total RNA Kit (Sigma-Aldrich Chemie GmbH, Germany) according to the manufacturer’s instructions. DNAse I treatment (Thermo Fisher, Waltham, MA, USA) was applied to the RNA samples, and their quality and quantity were assessed using a 1% agarose gel with an SDS stain, and nanodrop (Thermo Fisher), respectively. The RNA samples were shipped on dry ice to Novogene (Cambridge, UK).
 
 At Novogene (Cambridge, UK), the samples underwent quality checks using a Bionanalyzer (Agilent Technologies Inc., Santa Clara, CA, USA), and library preparation was performed based on polyA enrichment and using directional mRNA library preparation. The libraries were quality checked and sequenced using the NovaSeq 6000 platform (Illumina) with Novogene dual adapters: <br/>5’- AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT-3’ <br/>for read 1 and <br/>5’- GATCGGAAGAGCACACGTCTGAACTCCAGTCACGGATGACTATCTCGTATGCCGTCTTCTGCTTG-3’
 
-## 2. FastQC
+## 1. FastQC & MultiQC
 [FastQC](https://github.com/s-andrews/FastQC) ([Simon Andrews](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)) was used as a quality control, as very bad samples (Either from our in-house or downloaded from the SRA set) were then identified to be removed. Even if we removed the bad reads, some of them had such a low read count after trimming that we decided not to include them in our sample list and, therefore not included within the project. <br/>For more information on how FastQC was used within the project, go to [FASTQC](Scripts/01_FastQC).</br></br> For more information on FastQC please go to their site http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
-## 3. Trinity *de novo* Assembly
+## 2. Trinity *de novo* Assembly
 After FastQC quality control, all samples were then assembled with the Trinity pipeline. <br/>First, the adapters were trimmed with [Trimmomatic](https://github.com/usadellab/Trimmomatic) ([A. M Bolger et al_2014](https://academic.oup.com/bioinformatics/article/30/15/2114/2390096)) with the settings:
 ```
 -trimmomatic “novogene_adapter_sequences.fa:2:30:10:2:keepBothReads LEADING:3 TRAILING:3 MINLEN:36”
@@ -35,13 +35,13 @@ I highly recommend reading Trinity's [Wiki site](https://github.com/trinityrnase
 
 See [TRINITY](Scripts/02_Trinity) for a more in-depth overview of what we did.
 
-## 4. SuperTranscripts
+## 3. SuperTranscripts
 [SuperTranscripts](https://github.com/trinityrnaseq/trinityrnaseq/wiki/SuperTranscripts) ([Davidson *et al* 2017](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1284-1)) et al. was inferred by collapsing splicing isoforms using the Trinity implementation. <br/>See [SuperTranscripts](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/03_SuperTranscript) for a more in-depth overview of what we did.
 
-## 5. BUSCO I
+## 4. BUSCO I
 To determine the quality (completeness) of our assemblies we followed up by running [BUSCO](https://busco.ezlab.org/) ([Seppey *et al* 2019](https://link.springer.com/protocol/10.1007/978-1-4939-9173-0_14)). using the ‘eukaryota_odb10’ reference set. <br/><br/>See [BUSCO_I](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/04_BUSCO_I) for a more in-depth overview of what we did.
 
-## 6. TransDecoder
+## 5. TransDecoder
 After getting the SuperTranscript and confirming they are above the completeness threshold (70%) we continued with obtaining the proteins with [TransDecoder](https://github.com/TransDecoder/TransDecoder/wiki) ([Haas, BJ](https://github.com/TransDecoder/TransDecoder))
 1. Extracting the open reading frames with TransDecoder.LongOrfs
 2. Identify ORFs with homology via Blast
@@ -49,11 +49,11 @@ After getting the SuperTranscript and confirming they are above the completeness
 
 See [TransDecoder](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/05_Transdecoder) for a more in-depth overview of what we did.
 
-## 7. BUSCO II
+## 6. BUSCO II
 Another quality control is to determine if we still are above the completeness threshold (70%). This is because we used the single best option, and some of the completeness values dropped a bit. <br/><br/>
 See [BUSCO_II](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/06_BUSCO_II/README.md) for a more in-depth overview of what we did.
 
-## 8. Decontamination
+## 7. Decontamination
 ### Setting up the Decontamination
 To remove potential contaminants, we conducted sequence similarity searches against a comprehensive database that included proteins from various sources. Which were a positive set [*Klebsormidium nitens* NIES-2285](https://www.nature.com/articles/ncomms4978) and 4 potential contaminants through the RefSeq (downloaded on 17 Augustus 2020) representative bacterial genomes (11,318 genomes), fungi (2,397), all available viruses, archaea (1,833), and plastid genes (78,2087) (downloaded on 3 April 2023). We use this database to employ [MMseqs2](https://github.com/soedinglab/MMseqs2) ([Steinegger and Söding 2017](https://www.nature.com/articles/nbt.3988)) for the search, using an iterative approach with increasing sensitivities and maintaining a maximum of 10 hits 
 ```
@@ -68,6 +68,10 @@ To obtain the actual positive set. I've created a tool that automatically obtain
 
 See [GPDS](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/08_GetPositiveDataSet_GPDS/README.md) for a more in-depth overview of what we did.
 
+## 8. BUSCO III
+The decontamination step is designed to be strict—favoring the removal of potential contaminants over the risk of keeping false positives. As a result, while it's effective at cleaning up the data, it can also lead to false negatives, where genuine sequences are mistakenly filtered out.
+Before we move on to inferring gene families (orthogroups) with OrthoFinder, we want to check how complete the transcriptomes are after decontamination. Some drop in completeness is expected, given how the filtering works. But this step helps us spot any samples that may have lost too much genomic content to be useful going forward.
+
 ## 9. OrthoFinder
 For the next step, we have to run [OrthoFinder](https://github.com/davidemms/OrthoFinder) ([DM Emms and S Kelly 2019](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1832-y)) to obtain the OrtoGroups. For this we use a guide tree and all the positive samples we have, and included also our outgroups. <br/><br/>
 See [OrthoFinder](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/09_OrthoFinder) for a more in-depth overview of what we did.
@@ -77,12 +81,15 @@ This is another tool I've created to obtain all the Fasta Blocks (fasta block = 
 See [OSG](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/10_OrthogroupSequenceGrabber_OSG) for a more in-depth overview of what we did.
 
 In the pipeline, you will see two different sets as an output for OSG
-1. Old Set
-2. New Set
+1. Outgroup Set
+2. Ingroup Set
 
 We later combine them (see COGS) to get a good representation of the IN and OUT groups.
 
-### Old Set
+### Why two datasets?
+From past projects e.g. ([The Klebsormidiohyceae](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae)) we concluded that when using taxonomic group filtering you automatically create a bias for either the ingroup (species of interest) or the outgroup (your reference dataset). This can be seen as low/high branch support for the final phylogenomic trees. By combining the two datasets we (mostly) see a 100% branch support on every (ancestral) node. Hence why we decided to incorporate these two sets
+
+### Outgroup Set
 This was the original dataset we used within the preprint (on archive), however after our Reviewer pointed out that the In-Groups (Klebsormidiophyceae) had no great branch support but had great branch support for the out-group.
 For this set we used the Taxonomic Group file: [Klebsormidiophyceae_TaxonomicGroupFile_14_Taxa_420_set.txt](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/10_OrthogroupSequenceGrabber_OSG/TaxonomicGroupFiles/Klebsormidiophyceae_TaxonomicGroupFile_14_Taxa_420_set.txt) and used a threshold value of 10 (10/14 Taxonomic Groups had to be present).
 
@@ -90,7 +97,7 @@ For this set we used the Taxonomic Group file: [Klebsormidiophyceae_TaxonomicGro
 We basically started this set to define a good set that represents the In-Groups (Klebsormidiophyceae). Aka, have good branch support for them. For this set, we used the Taxonomic Group file: [Klebsormidiophyceae_TaxonomicGroupFile_4_Taxa.txt](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/10_OrthogroupSequenceGrabber_OSG/TaxonomicGroupFiles/Klebsormidiophyceae_TaxonomicGroupFile_4_Taxa.txt) and used a threshold value of 3 (3/4 Taxanomic Groups had to be present).
 
 
-## 11. MAFFT/IQTree
+## 11. MIAF
 As preparation for [PhyloPyPruner](https://pypi.org/project/phylopypruner/) to remove all the paralogs, we have to align all the sequences (Output from OSG) with [MAFFT](https://mafft.cbrc.jp/alignment/software/) ([K. Katoh and D.M. Standley 2013](https://academic.oup.com/mbe/article/30/4/772/1073398)) and then create trees out of the MSAs with [IQTree](http://www.iqtree.org/) ([Bui Quang Minh *et al* 2020](https://academic.oup.com/mbe/article/37/8/2461/5859215)) <br/>
 See [MAFFT/IQTree](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/11_MAFFT_IQtree) for a more in-depth overview of what we did.
 For this step, IQTree2 V2.0.6 was used. <br/><br/>See [IQtree Exectuables](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Executables/IQTree)
