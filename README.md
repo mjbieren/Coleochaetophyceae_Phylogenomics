@@ -116,23 +116,58 @@ For a detailed overview of the commands and workflow, see the [05_TransDecoder](
 
 
 ## 6. BUSCO II
-Another quality control is to determine if we still are above the completeness threshold (70%). This is because we used the single best option, and some of the completeness values dropped a bit. <br/><br/>
-See [BUSCO_II](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/06_BUSCO_II/README.md) for a more in-depth overview of what we did.
+As an additional quality control step, we reran BUSCO to verify that the completeness of the assemblies remained above the 70% threshold. This check was necessary because applying the `--single_best_only` option in TransDecoder occasionally resulted in a slight decrease in completeness scores.
+
+For a detailed overview of this step, please refer to the [06_BUSCO_II](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/06_BUSCO_II) directory.
+
 
 ## 7. Decontamination
-### Setting up the Decontamination
-To remove potential contaminants, we conducted sequence similarity searches against a comprehensive database that included proteins from various sources. Which were a positive set [*Klebsormidium nitens* NIES-2285](https://www.nature.com/articles/ncomms4978) and 4 potential contaminants through the RefSeq (downloaded on 17 Augustus 2020) representative bacterial genomes (11,318 genomes), fungi (2,397), all available viruses, archaea (1,833), and plastid genes (78,2087) (downloaded on 3 April 2023). We use this database to employ [MMseqs2](https://github.com/soedinglab/MMseqs2) ([Steinegger and Söding 2017](https://www.nature.com/articles/nbt.3988)) for the search, using an iterative approach with increasing sensitivities and maintaining a maximum of 10 hits 
-```
---start-sens 1 --sens-steps 3 -s 7 --alignment-mode 3 --max-seqs 10). 
-```
 
-This will give a blast output file in the .outfmt6 format. <br/><br/>
-See [Decontamination](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/07_Decontamination) for a more in-depth overview of what we did.
+### Setting Up the Decontamination
+
+To eliminate potential contaminants from the protein sets, we conducted sequence similarity searches using [MMseqs2](https://github.com/soedinglab/MMseqs2)  
+([Steinegger and Söding 2017](https://www.nature.com/articles/nbt.3988)).  
+We created a comprehensive reference database that included:
+
+- **Positive Set:**  
+  *Coleochaete scutata* strain SAG 110.80Mneu ([https://sagdb.uni-goettingen.de/](https://sagdb.uni-goettingen.de/)) As this is the only axenic strain.
+  
+- **Negative Sets:**  
+  - Representative **bacterial** genomes (43,588 genomes)  
+  - **Fungal** genomes (1,225)
+  - **Invertebrate** genomes (7,213)
+  - **Protozoa** genomes (893)
+  - **Archaeal** genomes (1,120)  
+  - All available **viral** proteins  (655,246 sequences)
+  - **Mitochondrion** proteins (240,117 sequences)
+  - **Plastid** proteins (1,064,130 sequences)
+  - **Plasmid** proteins (2,080,798 sequences)
+
+> ✅ All negative datasets were downloaded from RefSeq (7 July 2023).
+
+We used an iterative MMseqs2 search strategy with increasing sensitivity:
+
+```
+--start-sens 1 --sens-steps 3 -s 7 --alignment-mode 3 --max-seqs 10
+```
+This produces a `.outfmt6`-formatted file, which resembles standard BLAST tabular output and serves as input for the next filtering step.
+
+👉 For more detailed instructions and example scripts, see:  
+[**Scripts/07_Decontamination**](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/07_Decontamination)
+
+---
 
 ### Get Positive Data Set (GPDS)
-To obtain the actual positive set. I've created a tool that automatically obtains the hits against the positive set and writes an FASTA output file. It also does this for all the contaminants to give you the user information about the proteins that were removed. Furthermore, it gives you an overview of the percentage of contaminants.<br/>
 
-See [GPDS](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/08_GetPositiveDataSet_GPDS/README.md) for a more in-depth overview of what we did.
+To extract only the sequences that match the **positive reference set**, we used a custom tool: [**GPDS**](https://github.com/mjbieren/GPDS/).  
+This tool:
+
+- Extracts FASTA entries that matched the positive set (*Coleochaete scutata* SAG 110.80Mneu, in our case)
+- Outputs separate FASTA files for positive and contaminant matches
+- Summarizes contamination levels (% removed per strain)
+
+This step ensures that only high-confidence, taxonomically relevant sequences are retained for downstream orthology and phylogenomic analyses.
+
 
 ## 8. BUSCO III
 The decontamination step is designed to be strict—favoring the removal of potential contaminants over the risk of keeping false positives. As a result, while it's effective at cleaning up the data, it can also lead to false negatives, where genuine sequences are mistakenly filtered out.
