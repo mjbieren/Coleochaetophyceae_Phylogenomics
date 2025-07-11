@@ -53,7 +53,7 @@ After 6 weeks of growth:
    - Concentration and purity were assessed using a Nanodrop spectrophotometer (Thermo Fisher).
 
 4. **Sample Shipment**:  
-   - Purified RNA was shipped on **dry ice** to **Novogene (Cambridge, UK)** for sequencing.
+   - Purified RNA was shipped on **dry ice** to **Novogene (Munich, DE)** for sequencing.
 
 ---
 
