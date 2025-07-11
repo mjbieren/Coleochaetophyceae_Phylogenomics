@@ -103,13 +103,17 @@ To assess the quality and completeness of our assemblies, we ran [BUSCO](https:/
 For a detailed description of the procedure and scripts used, please refer to the [04_BUSCO_I](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/04_BUSCO_I) directory.
 
 
-## 5. TransDecoder
-After getting the SuperTranscript and confirming they are above the completeness threshold (70%) we continued with obtaining the proteins with [TransDecoder](https://github.com/TransDecoder/TransDecoder/wiki) ([Haas, BJ](https://github.com/TransDecoder/TransDecoder))
-1. Extracting the open reading frames with TransDecoder.LongOrfs
-2. Identify ORFs with homology via Blast
-3. Predict the likely coding region, but retain only blastp hits (also use  the --single_Best_only option)
+## 5. Protein Prediction with TransDecoder
 
-See [TransDecoder](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/05_Transdecoder) for a more in-depth overview of what we did.
+After generating the SuperTranscripts and confirming their completeness exceeds the 70% threshold, we proceeded to predict protein-coding sequences using [TransDecoder](https://github.com/TransDecoder/TransDecoder/wiki) ([Haas, BJ](https://github.com/TransDecoder/TransDecoder)).
+
+The main steps involved were:
+
+1. Extracting long open reading frames (ORFs) using `TransDecoder.LongOrfs`.
+2. Predicting the most likely coding regions while retaining only BLASTP-supported hits, applying the `--single_best_only` option to keep a single, high-confidence prediction per transcript.
+
+For a detailed overview of the commands and workflow, see the [05_TransDecoder](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/05_TransDecoder) directory.
+
 
 ## 6. BUSCO II
 Another quality control is to determine if we still are above the completeness threshold (70%). This is because we used the single best option, and some of the completeness values dropped a bit. <br/><br/>
