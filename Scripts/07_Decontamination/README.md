@@ -74,7 +74,7 @@ After running the MMseqs2 decontamination step, we extract only the positively m
 
 ### Run GPDS
 
-To run `GPDS`, use the following command:
+To run [GPDS](https://github.com/mjbieren/GPDS/), use the following command:
 
 ```
 GPDS.out -i <HeaderFile> -f <Fasta> -b <MMSeq2Output> -c <EvalueColumn> -s <StrainName> -r <OutputPath>
