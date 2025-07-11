@@ -16,9 +16,8 @@ We recommend installing MMseqs2 directly from the [official GitHub repository](h
 
 On **11 July 2023**, we compiled a comprehensive decontamination database that includes:
 
-- RefSeq: Bacteria, Archaea, Fungi, Viruses
-- Plastid, Plasmid, Protozoa, Mitochondrial, and Invertebrate genomes
-- **Positive control set**: *Coleochaetophyceae* (strain SAG 110.80Mneu)
+- **Negative control set (RefSeq)**: Bacteria, Archaea, Fungi, Viruses, Plastid, Plasmid, Protozoa, Mitochondrial, and Invertebrate genomes
+- **Positive control set**: *Coleochaetophyceae* (strain SAG 110.80Mneu, as this is the only axenic strain and no reference genome exists at this time)
 
 To simplify header parsing during classification, we reformatted all FASTA headers using the script [`simplify_headers_for_blastdb.py`](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/07_Decontamination/simplify_headers_for_blastdb.py), developed by Dr. Iker Irrisari:
 
@@ -26,7 +25,7 @@ To simplify header parsing during classification, we reformatted all FASTA heade
 python simplify_headers_for_blastdb.py [inputFile] [RenameHeaders] >> [FileOutput]
 
 ```
-where the FileOutput is the concatenated file for all sub-databases (e.g., RefSeq Bacteria, RefSeq Archeae, etc).
+Where the FileOutput is the concatenated file for all sub-databases (e.g., RefSeq Bacteria, RefSeq Archeae, etc).
 I used the following combinations:
 ```
 "arch_neg" for the Archea set
