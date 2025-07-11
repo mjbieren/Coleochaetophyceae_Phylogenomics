@@ -1,20 +1,25 @@
-# Phylogenomics unveil recent origin of morphological complexity in Coleochaetophyceae Dataset
-This is an overview of all (novel) tools and scripts we used in the Coleochaetophyceae Phylogenomics Project.
-This GitHub does not contain the raw data we used and obtained (with some small exceptions) during our Coleochaetophyceae Phylogenomic Project. For that, we would like to refer you to our Zenodo Link: https://doi.org/10.5281/zenodo.15376262
+# Phylogenomics Unveil Recent Origin of Morphological Complexity in Coleochaetophyceae — Dataset
 
+This repository provides an overview of the tools, scripts, and workflows used in the **Coleochaetophyceae Phylogenomics Project**.
 
-# Workflow
-![alt text](Sources/Images/PhyloRSeqpp_Flow_1000.png?raw=True "Pipeline")
-
-
-# Introduction
-
-This repository documents the pipeline used in the **Coleochaetophyceae Phylogenomics Project**.
-
-The workflow below outlines the steps involved, from raw RNA-Seq data acquisition to final analyses.
+> ⚠️ **Note:** This repository does **not** contain the raw sequencing data used in the study (with minor exceptions). All primary datasets are publicly available via **Zenodo**:  
+👉 [https://doi.org/10.5281/zenodo.15376262](https://doi.org/10.5281/zenodo.15376262)
 
 ---
 
+## 🧬 Workflow Overview
+
+![Pipeline Diagram](Sources/Images/PhyloRSeqpp_Flow_1000.png?raw=True "Pipeline")
+
+The image above illustrates the full computational pipeline used for transcriptome assembly, orthology inference, alignment, and phylogenomic analysis.
+
+---
+
+## 📘 Introduction
+
+This repository documents the pipeline developed for the **Coleochaetophyceae Phylogenomics Project**, from raw RNA-Seq data acquisition to phylogenetic inference.
+
+---
 ## 0. RNA-Seq Data Acquisition
 
 RNA-Seq data used in this project originated from two sources:
