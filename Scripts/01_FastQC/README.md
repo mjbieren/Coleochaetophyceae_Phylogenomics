@@ -37,4 +37,4 @@ This step of the pipeline summarizes quality control metrics from multiple sampl
 After running FastQC (or other compatible tools), run MultiQC on the directory containing their output:
 
 ```bash
-multiqc /path/to/input_directory -o /path/to/output_directory
+multiqc <INPUT_DIRECTORY> -o <OUTPUT_DIRECTORY>
