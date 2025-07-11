@@ -125,8 +125,7 @@ For a detailed overview of this step, please refer to the [06_BUSCO_II](https://
 
 ### Setting Up the Decontamination
 
-To eliminate potential contaminants from the protein sets, we conducted sequence similarity searches using [MMseqs2](https://github.com/soedinglab/MMseqs2)  
-([Steinegger and Söding 2017](https://www.nature.com/articles/nbt.3988)).  
+To eliminate potential contaminants from the protein sets, we conducted sequence similarity searches using [MMseqs2](https://github.com/soedinglab/MMseqs2)([Steinegger and Söding 2017](https://www.nature.com/articles/nbt.3988)).  
 We created a comprehensive reference database that included:
 
 - **Positive Set:**  
