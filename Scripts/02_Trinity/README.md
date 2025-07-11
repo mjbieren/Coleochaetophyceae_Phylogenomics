@@ -1,9 +1,33 @@
-# Trinity
-This is the second step within the pipeline. 
-Generally, you just have to edit [02_Trinity_HPC_Singularity_Pair.sh](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/02_Trinity/02_Trinity_HPC_Singularity_Pair.sh) if you run Trinity in a slurm system. <br/>
-As updates happen on the slurm system and the conda environment for the Trinity setup is a bit complicated as package dependage is sometimes an issue, I ran this step with a singularity file. That can be found here: [TRINITY_SINGULARITY_IMAGE](https://data.broadinstitute.org/Trinity/TRINITY_SINGULARITY/)
+# Trinity Assembly
 
-Alternatively you can run it locally with singularity by adjusting the [02_Trinity_SingleMachine.sh](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/02_Trinity/02_Trinity_SingleMachine.sh)
+This repository contains resources for the **second step** in the transcriptome assembly pipeline, which uses [Trinity](https://github.com/trinityrnaseq/trinityrnaseq) for de novo RNA-Seq assembly.
 
-For more information, go to the [Trinity Github](https://github.com/trinityrnaseq/trinityrnaseq) <br/>
-I highly recommend reading their [Wiki site](https://github.com/trinityrnaseq/trinityrnaseq/wiki), which explains everything pretty well.
+## Usage
+
+### 1. On a SLURM HPC System
+
+For cluster environments that use SLURM, use the following script:
+
+👉 [`02_Trinity_HPC_Singularity_Pair.sh`](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/02_Trinity/02_Trinity_HPC_Singularity_Pair.sh)
+
+Due to frequent updates in SLURM configurations and dependency issues with Conda environments, this step is run using a Singularity container.
+
+- **Singularity Image**:  
+  The pre-built image for Trinity is available here:  
+  [TRINITY_SINGULARITY_IMAGE](https://data.broadinstitute.org/Trinity/TRINITY_SINGULARITY/)
+
+### 2. On a Local Machine
+
+If you prefer to run Trinity locally using Singularity, refer to:
+
+👉 [`02_Trinity_SingleMachine.sh`](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/02_Trinity/02_Trinity_SingleMachine.sh)
+
+Be sure to modify the script to match your local setup (e.g., paths, input files, and number of threads).
+
+## Additional Resources
+
+- **Trinity GitHub Repository**: [trinityrnaseq/trinityrnaseq](https://github.com/trinityrnaseq/trinityrnaseq)
+- **Trinity Wiki (Highly Recommended)**: [Trinity Wiki](https://github.com/trinityrnaseq/trinityrnaseq/wiki)
+
+---
+
