@@ -64,7 +64,7 @@ Don't forget to change the variables on lines: 8,9,10,11.
 
 The output will be a simple outfmt6 output, identical to a blast output file with outfmt6 format.
 
-## 8. Get Positive Data Set (GPDS)
+## Get Positive Data Set (GPDS)
 
 After running the MMseqs2 decontamination step, we extract only the positively matched protein sequences (i.e., non-contaminants) using the [GPDS](https://github.com/mjbieren/GPDS/) tool.
 
