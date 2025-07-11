@@ -7,6 +7,6 @@ In this project, BUSCO was available as a pre-installed module on our High Perfo
 ```
 conda create -n busco -c conda-forge -c bioconda busco
 ```
-Once installed, you can configure and execute the analysis by editing and running the provided [04_Busco_I_Conda.sh](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/04_BUSCO_I/Busco_I.sh) script.
+Once installed, you can configure and execute the analysis by editing and running the provided [04_Busco_I_Conda.sh](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/04_BUSCO_I/04_Busco_I_Conda.sh) script.
 
-For more detailed information about BUSCO, please visit their official website: BUSCO
+For more detailed information about BUSCO, please visit their official website: [BUSCO](https://busco.ezlab.org/)
