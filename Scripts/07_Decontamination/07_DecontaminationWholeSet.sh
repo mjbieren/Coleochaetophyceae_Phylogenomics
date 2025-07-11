@@ -1,12 +1,12 @@
 #!/bin/bash
 
-WORKDIR= #COPY folder of Step 5
-DB=~/Database/Decontamination_Database_Base_Coleo/Decontamination_Coleo_DB.db #Should work, don't touch
-HEADERFILE=~/Database/Decontamination_Database_Base_Coleo/Headerfile_coleo.txt #Should work, don't touch
-COPYDIR= #Directory where your positive set goes
-PROGRAM_PATH=~/Programs/GetPositiveDataSetNew/GPDS_Debian.out
-PATH_TO_SIMPLIFY_HEADER_SCRIPT=~/Programs/Simplify_Headers/simplify_headers_for_blastdb.py
-MMSEQSPATH=~/Programs/mmseqs/mmseqs/bin/mmseqs
+WORKDIR= #Where all transdecoder outputs are :)
+DB=~/Database/Decontamination_Database_Base_Coleo/Decontamination_Coleo_DB.db #change
+HEADERFILE=~/Database/Decontamination_Database_Base_Coleo/Headerfile_coleo.txt #Change
+COPYDIR= #Directory where your positive set goes (They will get renamed without the _Positive suffix)
+PROGRAM_PATH=~/Programs/GetPositiveDataSet/GPDS_Debian_Static.out #change
+PATH_TO_SIMPLIFY_HEADER_SCRIPT=~/Programs/Simplify_Headers/simplify_headers_for_blastdb.py #Change
+MMSEQSPATH=~/Programs/mmseqs/mmseqs/bin/mmseqs #Change
 
 cd ${WORKDIR}
 
