@@ -98,7 +98,10 @@ See [02_Trinity](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tr
 [SuperTranscripts](https://github.com/trinityrnaseq/trinityrnaseq/wiki/SuperTranscripts) ([Davidson *et al* 2017](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1284-1)) et al. was inferred by collapsing splicing isoforms using the Trinity implementation. <br/>See [SuperTranscripts](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/03_SuperTranscript) for a more in-depth overview of what we did.
 
 ## 4. BUSCO I
-To determine the quality (completeness) of our assemblies we followed up by running [BUSCO](https://busco.ezlab.org/) ([Seppey *et al* 2019](https://link.springer.com/protocol/10.1007/978-1-4939-9173-0_14)). using the ‘eukaryota_odb10’ reference set. <br/><br/>See [BUSCO_I](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/04_BUSCO_I) for a more in-depth overview of what we did.
+To assess the quality and completeness of our assemblies, we ran [BUSCO](https://busco.ezlab.org/) ([Seppey *et al.*, 2019](https://link.springer.com/protocol/10.1007/978-1-4939-9173-0_14)) using the `eukaryota_odb10` reference dataset.
+
+For a detailed description of the procedure and scripts used, please refer to the [04_BUSCO_I](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/04_BUSCO_I) directory.
+
 
 ## 5. TransDecoder
 After getting the SuperTranscript and confirming they are above the completeness threshold (70%) we continued with obtaining the proteins with [TransDecoder](https://github.com/TransDecoder/TransDecoder/wiki) ([Haas, BJ](https://github.com/TransDecoder/TransDecoder))
