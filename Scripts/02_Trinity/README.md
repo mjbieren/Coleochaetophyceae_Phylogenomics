@@ -1,6 +1,6 @@
 # Trinity Assembly
 
-This repository contains resources for the **second step** in the transcriptome assembly pipeline, which uses [Trinity](https://github.com/trinityrnaseq/trinityrnaseq) for de novo RNA-Seq assembly.
+This repository contains resources for the **second step** in the Phylogenomic pipeline, which uses [Trinity](https://github.com/trinityrnaseq/trinityrnaseq) for de novo RNA-Seq assembly.
 
 ## Usage
 
