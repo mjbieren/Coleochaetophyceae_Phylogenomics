@@ -8,18 +8,72 @@ This GitHub does not contain the raw data we used and obtained (with some small 
 
 
 # Introduction
-Above, I've portrayed the pipeline in which the Coleochaetophyceae Phylogenomics Project was executed.
 
-## 0. RNA Seq Data
-This was either obtained from the SRA database . Or obtained in-house.
-All in-house strains were cultivated in 3NBBM (medium [26a](https://doi.org/10.1111/j.1438-8677.1997.tb00659.x)) at 18°C under full-spectrum fluorescent lamps (25-35 µmol photons m<sup>−2</sup> s<sup>−1</sup>; 14:10h light-dark cycle). <br/>
-After 6 weeks, 50ml of the culture was centrifuged for 5 min at 20°C at 11000 rpm. The supernatant was removed, and the pellet was transferred into the Tenbroek tissue homogenizer and manually disrupted for 10 min on ice.
-Further Extraction was then done with the RNA from the Spectrum™ Plant Total RNA Kit (Sigma-Aldrich Chemie GmbH, Germany) according to the manufacturer’s instructions. DNAse I treatment (Thermo Fisher, Waltham, MA, USA) was applied to the RNA samples, and their quality and quantity were assessed using a 1% agarose gel with an SDS stain, and nanodrop (Thermo Fisher), respectively. The RNA samples were shipped on dry ice to Novogene (Cambridge, UK).
+This repository documents the pipeline used in the **Coleochaetophyceae Phylogenomics Project**.
 
-At Novogene (Cambridge, UK), the samples underwent quality checks using a Bionanalyzer (Agilent Technologies Inc., Santa Clara, CA, USA), and library preparation was performed based on polyA enrichment and using directional mRNA library preparation. The libraries were quality checked and sequenced using the NovaSeq 6000 platform (Illumina) with Novogene dual adapters: <br/>5’- AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT-3’ <br/>for read 1 and <br/>5’- GATCGGAAGAGCACACGTCTGAACTCCAGTCACGGATGACTATCTCGTATGCCGTCTTCTGCTTG-3’
+The workflow below outlines the steps involved, from raw RNA-Seq data acquisition to final analyses.
+
+---
+
+## 0. RNA-Seq Data Acquisition
+
+RNA-Seq data used in this project originated from two sources:
+
+- **Publicly available datasets** obtained via the NCBI Sequence Read Archive (SRA)
+- **In-house generated RNA-Seq libraries** from selected Coleochaetophyceae strains
+
+---
+
+### 🧫 In-House Strain Cultivation and RNA Extraction
+
+Strains cultivated in-house were grown in **3NBBM medium** ([medium 26a](https://doi.org/10.1111/j.1438-8677.1997.tb00659.x)) under the following conditions:
+
+- Temperature: 18°C  
+- Lighting: Full-spectrum fluorescent lamps (25–35 µmol photons m<sup>−2</sup> s<sup>−1</sup>)  
+- Light cycle: 14 h light / 10 h dark  
+
+After 6 weeks of growth:
+
+1. **Harvesting**:  
+   - 50 mL of culture was centrifuged for 5 min at 20°C at 11,000 rpm.  
+   - The supernatant was discarded, and the pellet was transferred to a Tenbroek tissue homogenizer.  
+   - Cells were manually disrupted for 10 minutes on ice.
+
+2. **RNA Extraction**:  
+   - Total RNA was extracted using the **Spectrum™ Plant Total RNA Kit** (Sigma-Aldrich, Germany), following the manufacturer's protocol.  
+   - **DNAse I treatment** (Thermo Fisher, USA) was applied to remove genomic DNA.
+
+3. **Quality Assessment**:  
+   - RNA quality was verified on a 1% SDS-stained agarose gel.  
+   - Concentration and purity were assessed using a Nanodrop spectrophotometer (Thermo Fisher).
+
+4. **Sample Shipment**:  
+   - Purified RNA was shipped on **dry ice** to **Novogene (Cambridge, UK)** for sequencing.
+
+---
+
+### 🧬 Library Preparation & Sequencing (Novogene)
+
+At Novogene:
+
+- RNA quality was re-evaluated using a **Bioanalyzer** (Agilent Technologies).
+- mRNA libraries were prepared using **polyA enrichment** and **strand-specific (directional) protocols**.
+- Sequencing was performed on the **Illumina NovaSeq 6000 platform** using dual-index adapters.
+
+#### Adapter Sequences:
+
+- **Read 1 Adapter**:  
+  `5’- AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT -3’`
+
+- **Read 2 Adapter**:  
+  `5’- GATCGGAAGAGCACACGTCTGAACTCCAGTCACGGATGACTATCTCGTATGCCGTCTTCTGCTTG -3’`
+
+---
+
+
 
 ## 1. FastQC & MultiQC
-[FastQC](https://github.com/s-andrews/FastQC) ([Simon Andrews](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)) was used as a quality control, as very bad samples (Either from our in-house or downloaded from the SRA set) were then identified to be removed. Even if we removed the bad reads, some of them had such a low read count after trimming that we decided not to include them in our sample list and, therefore not included within the project. <br/>For more information on how FastQC was used within the project, go to [FASTQC](Scripts/01_FastQC).</br></br> For more information on FastQC please go to their site http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+[FastQC](https://github.com/s-andrews/FastQC) ([Simon Andrews](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)) was used as a quality control, as very bad samples (Either from our in-house or downloaded from the SRA set) were then identified to be removed. <br/>For more information on how FastQC was used within the project, go to [FASTQC](Scripts/01_FastQC).</br></br> For more information on FastQC please go to their site http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
 ## 2. Trinity *de novo* Assembly
 After FastQC quality control, all samples were then assembled with the Trinity pipeline. <br/>First, the adapters were trimmed with [Trimmomatic](https://github.com/usadellab/Trimmomatic) ([A. M Bolger et al_2014](https://academic.oup.com/bioinformatics/article/30/15/2114/2390096)) with the settings:
