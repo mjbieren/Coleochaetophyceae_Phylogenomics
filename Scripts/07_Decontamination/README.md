@@ -102,8 +102,7 @@ GPDS.out -i <HeaderFile> -f <Fasta> -b <MMSeq2Output> -c <EvalueColumn> -s <Stra
 
 ### Optional: Batch Processing
 
-Suppose you have followed all previous steps and now want to process multiple samples at once. In that case, you can consolidate all TransDecoder. .pep` files into a single directory and run the following script to perform decontamination across the dataset:
+Suppose you have followed all previous steps and now want to process multiple samples at once. In that case, you can consolidate all `TransDecoder .pep` files into a single directory and run the following script to perform decontamination across the dataset:
 
-```
-bash 07_DecontaminationWholeSet.sh
-```
+[07_DecontaminationWholeSet.sh](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/07_Decontamination/07_DecontaminationWholeSet.sh
+
