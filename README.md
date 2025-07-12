@@ -274,7 +274,7 @@ MIAF performs the following:
 ### How to Use MIAF
 
 You can find full instructions and example usage here:  
-👉 [Scripts/11_MIAF](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/11_MIAF)
+👉 [11_MIAF](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/11_MIAF)
 
 Ensure that both **MAFFT** and **IQ-TREE** are installed and accessible in your environment (Or use executables).
 
@@ -288,14 +288,45 @@ Ensure that both **MAFFT** and **IQ-TREE** are installed and accessible in your 
 
 ---
 
+## 12. Apply PhyloPyPruner Format (APPPFormat)
 
-## 12. Apply PhyloPyPruner Format
-This is the 3rd tool I've created. It basically reformats the Newick tree files that IQtree gives as an output (by default) and makes it in a format that PhyloPyPruner (PPP) can use.<br/><br/>
-See [APPPFilter](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/12_APPPFilter) for a more in-depth overview of what we did.
+Before pruning gene trees with **PhyloPyPruner**, the Newick tree files produced by **IQ-TREE** must be reformatted. This is because IQ-TREE alters the alignment headers during tree construction, removing species-strain delimiters (e.g., replacing `@` with `_`). The **APPPFormat** tool restores the correct format to these tree tips, ensuring compatibility with PhyloPyPruner.
 
-This prepares all data for the next pruning step with [PhyloPyPruner](https://github.com/davidemms/PhyloPyPruner).
+This step prepares all required inputs for the next pruning step using [PhyloPyPruner](https://github.com/davidemms/PhyloPyPruner).
+
+---
+
+### 🔧 What APPPFormat Does
+
+- Reformats Newick tree files to comply with PhyloPyPruner requirements.
+- Restores proper species/strain delimiters using a taxonomic group file.
+- Moves reformatted tree files to an output folder.
+- Optionally copies and renames MAFFT alignment files (`.mafft → .fa`).
+
+---
+
+### 📁 Input Requirements
+
+- Tree files in Newick format (e.g., `.treefile` output from IQ-TREE).
+- **Taxonomic group file** with species/strain format (see [examples](https://github.com/mjbieren/ApplyPPPFormat/tree/main/TaxonomicGroupFiles)).
+- Optional: Corresponding `.mafft` alignment files for each tree.
+
+---
+
+### ▶️ How to Use
+
+1. Edit and run the `APPPFormat.sh` script:
+   - [`APPPFormat.sh`](https://github.com/mjbieren/ApplyPPPFormat/blob/main/APPPFormat.sh)
+
+2. Example command structure:
+   ```
+   APPPFormat.out -i [PathToTrees] -t [TreeFileExtension] -g [TaxonomicGroupFile] -r [OutputFolderPath] -m [PathToMafftFiles (optional)]
+   ```
+
+For an overview how we did it and example scripts for this project go to [12_APPPF](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/12_APPPF)
 
 ----
+
 ## 13. PhyloPyPruner
 At this step, we remove all the paralogs from the OrtoGroups to get the desired species per OrthoGroup (Fasta file).
 For the different sets, we used different parameters, which can be found in the following scripts.
