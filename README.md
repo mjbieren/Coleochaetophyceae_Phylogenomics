@@ -193,7 +193,7 @@ The analysis includes all high-quality, post-decontamination samples, along with
 
 ---
 
-# Step 10: OrthoGroup Sequence Grabber (OSG)
+## Step 10: OrthoGroup Sequence Grabber (OSG)
 
 The **[OrthoGroup Sequence Grabber (OSG)](https://github.com/mjbieren/OrthoGroup_Sequence_Grabber)** is a custom tool developed to extract all FASTA blocks (i.e., FASTA headers and sequences) corresponding to each orthogroup. The tool allows for flexible filtering based on a user-defined minimum number of taxonomic groups per orthogroup, ensuring that only well-represented gene families are selected for downstream analysis.
 
@@ -201,7 +201,7 @@ The **[OrthoGroup Sequence Grabber (OSG)](https://github.com/mjbieren/OrthoGroup
 [Scripts/10_OrthogroupSequenceGrabber_OSG](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/10_OrthogroupSequenceGrabber_OSG)
 
 
-## 🧪 Output Overview
+### 🧪 Output Overview
 
 The pipeline produces **two distinct datasets** from OSG:
 
@@ -211,7 +211,7 @@ The pipeline produces **two distinct datasets** from OSG:
 These datasets are later combined during the **COGS** step to ensure balanced representation of both ingroup and outgroup taxa in the final alignment.
 
 
-## ❓ Why Two Datasets?
+### ❓ Why Two Datasets?
 
 From previous projects (e.g., [Klebsormidiophyceae Phylogenomics](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae)), we observed that filtering orthogroups based on taxonomic group presence can introduce bias.  
 - Favoring **ingroup taxa** may reduce **outgroup support**.
@@ -220,9 +220,9 @@ From previous projects (e.g., [Klebsormidiophyceae Phylogenomics](https://github
 By generating and then **combining** both sets, we typically achieve **stronger branch support across the entire phylogenomic tree**, including ancestral nodes.
 
 
-## 🌐 Dataset Details
+### 🌐 Dataset Details
 
-### 🔹 Outgroup Set
+#### 🔹 Outgroup Set
 
 The dataset that favors the outgroups of the dataset
 
@@ -233,7 +233,7 @@ The dataset that favors the outgroups of the dataset
   Minimum of 10 out of 14 taxonomic groups required per orthogroup.
 
 
-### 🔹 Ingroup Set
+#### 🔹 Ingroup Set
 
 The dataset that favors the ingroup of the dataset (Aka the Coleochaetophyceae species)
 
@@ -244,7 +244,7 @@ The dataset that favors the ingroup of the dataset (Aka the Coleochaetophyceae s
   Minimum of 2 out of 4 taxonomic groups required per orthogroup.
 
 
-## 🚀 Running the Tool
+### 🚀 Running the Tool
 
 You can execute the OSG program with a command like:
 
