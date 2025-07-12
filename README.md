@@ -73,10 +73,11 @@ At Novogene:
 - **Read 2 Adapter**:  
   `5’- GATCGGAAGAGCACACGTCTGAACTCCAGTCACGGATGACTATCTCGTATGCCGTCTTCTGCTTG -3’`
 
-
+---
 
 ## 1. FastQC & MultiQC
 [FastQC](https://github.com/s-andrews/FastQC) ([Simon Andrews](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)) was used as a quality control, as very bad samples (Either from our in-house or downloaded from the SRA set) were then identified to be removed. <br/>For more information on how FastQC was used within the project, go to [01_FASTQC](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/01_FastQC).</br></br> For more information on FastQC please go to their site http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+---
 
 ## 2. Trinity *de novo* Assembly
 After FastQC quality control, all samples were then assembled with the Trinity pipeline. <br/>First, the adapters were trimmed with [Trimmomatic](https://github.com/usadellab/Trimmomatic) ([A. M Bolger et al_2014](https://academic.oup.com/bioinformatics/article/30/15/2114/2390096)) with the settings:
@@ -91,15 +92,18 @@ Trinity --seqType fq --left [LEFT_READS] --right [RIGHT_READS] --output [OUTPUT_
 I highly recommend reading Trinity's [Wiki site](https://github.com/trinityrnaseq/trinityrnaseq/wiki), which explains everything pretty well.<br/><br/>
 
 See [02_Trinity](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/02_Trinity) for a more in-depth overview of what we did.
+---
 
 ## 3. SuperTranscripts
 [SuperTranscripts](https://github.com/trinityrnaseq/trinityrnaseq/wiki/SuperTranscripts) ([Davidson *et al* 2017](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1284-1)) et al. was inferred by collapsing splicing isoforms using the Trinity implementation. <br/>See [SuperTranscripts](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/03_SuperTranscript) for a more in-depth overview of what we did.
+---
 
 ## 4. BUSCO I
 To assess the quality and completeness of our assemblies, we ran [BUSCO](https://busco.ezlab.org/) ([Seppey *et al.*, 2019](https://link.springer.com/protocol/10.1007/978-1-4939-9173-0_14)) using the `eukaryota_odb10` reference dataset.
 
 For a detailed description of the procedure and scripts used, please refer to the [04_BUSCO_I](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/04_BUSCO_I) directory.
 
+---
 
 ## 5. Protein Prediction with TransDecoder
 
@@ -112,12 +116,14 @@ The main steps involved were:
 
 For a detailed overview of the commands and workflow, see the [05_TransDecoder](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/05_TransDecoder) directory.
 
+---
 
 ## 6. BUSCO II
 As an additional quality control step, we reran BUSCO to verify that the completeness of the assemblies remained above the 70% threshold. This check was necessary because applying the `--single_best_only` option in TransDecoder occasionally resulted in a slight decrease in completeness scores.
 
 For a detailed overview of this step, please refer to the [06_BUSCO_II](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/06_BUSCO_II) directory.
 
+---
 
 ## 7. Decontamination
 
@@ -164,11 +170,14 @@ This tool:
 
 This step ensures that only high-confidence, taxonomically relevant sequences are retained for downstream orthology and phylogenomic analyses.
 
+---
 
 ## 8. BUSCO III
 The decontamination step is designed to be stringent, prioritizing the removal of potential contaminants over the risk of generating false positives. As a result, while it's effective at cleaning up the data, it can also lead to false negatives, where genuine sequences are mistakenly filtered out.
 Before we proceed to inferring gene families (orthogroups) with OrthoFinder, we want to verify the completeness of the transcriptomes after decontamination. Some drop in completeness is expected, given how the filtering works. However, this step helps us identify any samples that may have lost too much genomic content to be useful as we advance.
 See [08_BUSCO_III](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/08_BUSCO_III) for more information.
+
+---
 
 ## 9. OrthoFinder – Orthogroup Inference
 
@@ -179,6 +188,7 @@ The analysis includes all high-quality, post-decontamination samples, along with
 📂 For a detailed overview of the workflow, parameters, and input structure, see the script and documentation in:
 [Scripts/09_OrthoFinder](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/09_OrthoFinder)
 
+---
 
 # Step 10: OrthoGroup Sequence Grabber (OSG)
 
@@ -238,7 +248,7 @@ You can execute the OSG program with a command like:
 ```
 OSG.out -g [ORTHOGROUP_DIR] -f [FASTA_DIR] -g [TaxonomicGroupFile.txt] -t [THRESHOLD] -r [OUTPUT_DIR]
 ```
-
+---
 
 ## 11. MIAF
 As preparation for [PhyloPyPruner](https://pypi.org/project/phylopypruner/) to remove all the paralogs, we have to align all the sequences (Output from OSG) with [MAFFT](https://mafft.cbrc.jp/alignment/software/) ([K. Katoh and D.M. Standley 2013](https://academic.oup.com/mbe/article/30/4/772/1073398)) and then create trees out of the MSAs with [IQTree](http://www.iqtree.org/) ([Bui Quang Minh *et al* 2020](https://academic.oup.com/mbe/article/37/8/2461/5859215)) <br/>
