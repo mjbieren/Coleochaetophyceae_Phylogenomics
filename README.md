@@ -159,7 +159,7 @@ We used an iterative MMseqs2 search strategy with increasing sensitivity:
 This produces a `.outfmt6`-formatted file, which resembles standard BLAST tabular output and serves as input for the next filtering step.
 
 👉 For more detailed instructions and example scripts, see:  
-[**Scripts/07_Decontamination**](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/07_Decontamination)
+[**07_Decontamination**](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/07_Decontamination)
 
 
 ### Get Positive Data Set (GPDS)
