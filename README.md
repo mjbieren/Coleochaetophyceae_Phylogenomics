@@ -27,7 +27,7 @@ RNA-Seq data used in this project originated from two sources:
 - **Publicly available datasets** obtained via the NCBI Sequence Read Archive (SRA)
 - **In-house generated RNA-Seq libraries** from selected Coleochaetophyceae strains
 
----
+
 
 ### 🧫 In-House Strain Cultivation and RNA Extraction
 
@@ -55,7 +55,7 @@ After 6 weeks of growth:
 4. **Sample Shipment**:  
    - Purified RNA was shipped on **dry ice** to **Novogene (Munich, DE)** for sequencing.
 
----
+
 
 ### 🧬 Library Preparation & Sequencing (Novogene)
 
@@ -72,8 +72,6 @@ At Novogene:
 
 - **Read 2 Adapter**:  
   `5’- GATCGGAAGAGCACACGTCTGAACTCCAGTCACGGATGACTATCTCGTATGCCGTCTTCTGCTTG -3’`
-
----
 
 
 
@@ -154,7 +152,6 @@ This produces a `.outfmt6`-formatted file, which resembles standard BLAST tabula
 👉 For more detailed instructions and example scripts, see:  
 [**Scripts/07_Decontamination**](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/07_Decontamination)
 
----
 
 ### Get Positive Data Set (GPDS)
 
@@ -190,7 +187,6 @@ The **[OrthoGroup Sequence Grabber (OSG)](https://github.com/mjbieren/OrthoGroup
 📂 For detailed usage and implementation, see the full script and documentation:  
 [Scripts/10_OrthogroupSequenceGrabber_OSG](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/10_OrthogroupSequenceGrabber_OSG)
 
----
 
 ## 🧪 Output Overview
 
@@ -201,7 +197,6 @@ The pipeline produces **two distinct datasets** from OSG:
 
 These datasets are later combined during the **COGS** step to ensure balanced representation of both ingroup and outgroup taxa in the final alignment.
 
----
 
 ## ❓ Why Two Datasets?
 
@@ -211,7 +206,6 @@ From previous projects (e.g., [Klebsormidiophyceae Phylogenomics](https://github
 
 By generating and then **combining** both sets, we typically achieve **stronger branch support across the entire phylogenomic tree**, including ancestral nodes.
 
----
 
 ## 🌐 Dataset Details
 
@@ -225,7 +219,6 @@ The dataset that favors the outgroups of the dataset
 - **Threshold:**  
   Minimum of 10 out of 14 taxonomic groups required per orthogroup.
 
----
 
 ### 🔹 Ingroup Set
 
@@ -237,7 +230,6 @@ The dataset that favors the ingroup of the dataset (Aka the Coleochaetophyceae s
 - **Threshold:**  
   Minimum of 2 out of 4 taxonomic groups required per orthogroup.
 
----
 
 ## 🚀 Running the Tool
 
