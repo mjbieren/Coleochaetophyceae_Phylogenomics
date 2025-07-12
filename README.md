@@ -253,7 +253,7 @@ OSG.out -g [ORTHOGROUP_DIR] -f [FASTA_DIR] -g [TaxonomicGroupFile.txt] -t [THRES
 ```
 ---
 
-# 11. MIAF – Mafft and IQ-TREE All Fasta Files
+## 11. MIAF – Mafft and IQ-TREE All Fasta Files
 
 Once orthogroups have been identified, it's common to observe **paralogs** within these groups. To refine these orthogroups for downstream phylogenetic analysis, we use **PhyloPyPruner**, which requires precomputed multiple sequence alignments and gene trees.
 
@@ -270,32 +270,32 @@ MIAF performs the following:
 - Runs IQ-TREE to infer gene trees
 - Supports high-performance cluster usage for parallel processing
 
----
 
-## How to Use MIAF
+### How to Use MIAF
 
 You can find full instructions and example usage here:  
 👉 [Scripts/11_MIAF](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/11_MIAF)
 
 Ensure that both **MAFFT** and **IQ-TREE** are installed and accessible in your environment (Or use executables).
 
+
+### Output
+
+- The directory "Fasta_Files_Processed" with the processed (original) fasta files
+- The directory "MSA_Trees" with the MSA files and corresponding tree files (newick format)
+
+
+
 ---
-
-## Output
-
-- A directory with the processed fasta files
-- A directory with the MSA files and corresponding treefiles (newick format)
-
-This prepares all data for the next pruning step with [PhyloPyPruner](https://github.com/davidemms/PhyloPyPruner).
-
-
 
 
 ## 12. Apply PhyloPyPruner Format
 This is the 3rd tool I've created. It basically reformats the Newick tree files that IQtree gives as an output (by default) and makes it in a format that PhyloPyPruner (PPP) can use.<br/><br/>
 See [APPPFilter](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/12_APPPFilter) for a more in-depth overview of what we did.
 
+This prepares all data for the next pruning step with [PhyloPyPruner](https://github.com/davidemms/PhyloPyPruner).
 
+----
 ## 13. PhyloPyPruner
 At this step, we remove all the paralogs from the OrtoGroups to get the desired species per OrthoGroup (Fasta file).
 For the different sets, we used different parameters, which can be found in the following scripts.
