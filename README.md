@@ -294,7 +294,6 @@ Before pruning gene trees with **PhyloPyPruner**, the Newick tree files produced
 
 This step prepares all required inputs for the next pruning step using [PhyloPyPruner](https://github.com/davidemms/PhyloPyPruner).
 
----
 
 ### 🔧 What APPPFormat Does
 
@@ -303,15 +302,12 @@ This step prepares all required inputs for the next pruning step using [PhyloPyP
 - Moves reformatted tree files to an output folder.
 - Optionally copies and renames MAFFT alignment files (`.mafft → .fa`).
 
----
-
 ### 📁 Input Requirements
 
 - Tree files in Newick format (e.g., `.treefile` output from IQ-TREE).
 - **Taxonomic group file** with species/strain format (see [examples](https://github.com/mjbieren/ApplyPPPFormat/tree/main/TaxonomicGroupFiles)).
 - Optional: Corresponding `.mafft` alignment files for each tree.
 
----
 
 ### ▶️ How to Use
 
@@ -323,7 +319,7 @@ This step prepares all required inputs for the next pruning step using [PhyloPyP
    APPPFormat.out -i [PathToTrees] -t [TreeFileExtension] -g [TaxonomicGroupFile] -r [OutputFolderPath] -m [PathToMafftFiles (optional)]
    ```
 
-For an overview how we did it and example scripts for this project go to [12_APPPF](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/12_APPPF)
+For an overview of how we did it and example scripts for this project, go to [12_APPPF](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/12_APPPF)
 
 ----
 
