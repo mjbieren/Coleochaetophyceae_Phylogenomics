@@ -253,10 +253,42 @@ OSG.out -g [ORTHOGROUP_DIR] -f [FASTA_DIR] -g [TaxonomicGroupFile.txt] -t [THRES
 ```
 ---
 
-## 11. MIAF
-As preparation for [PhyloPyPruner](https://pypi.org/project/phylopypruner/) to remove all the paralogs, we have to align all the sequences (Output from OSG) with [MAFFT](https://mafft.cbrc.jp/alignment/software/) ([K. Katoh and D.M. Standley 2013](https://academic.oup.com/mbe/article/30/4/772/1073398)) and then create trees out of the MSAs with [IQTree](http://www.iqtree.org/) ([Bui Quang Minh *et al* 2020](https://academic.oup.com/mbe/article/37/8/2461/5859215)) <br/>
-See [MAFFT/IQTree](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/11_MAFFT_IQtree) for a more in-depth overview of what we did.
-For this step, IQTree2 V2.0.6 was used. <br/><br/>See [IQtree Exectuables](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Executables/IQTree)
+# 11. MIAF – Mafft and IQ-TREE All Fasta Files
+
+Once orthogroups have been identified, it's common to observe **paralogs** within these groups. To refine these orthogroups for downstream phylogenetic analysis, we use **PhyloPyPruner**, which requires precomputed multiple sequence alignments and gene trees.
+
+This step prepares the data for PhyloPyPruner by:
+
+- Aligning all protein sequences in a directory using **MAFFT**
+- Building maximum likelihood trees with **IQ-TREE**
+
+To automate this process across many FASTA files, we use the job manager **[MIAF](https://github.com/mjbieren/MIAF)** (Mafft and IQtree All Fasta files).
+
+MIAF performs the following:
+- Iterates through each FASTA file in a directory
+- Runs MAFFT to align sequences
+- Runs IQ-TREE to infer gene trees
+- Supports high-performance cluster usage for parallel processing
+
+---
+
+## How to Use MIAF
+
+You can find full instructions and example usage here:  
+👉 [Scripts/11_MIAF](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/11_MIAF)
+
+Ensure that both **MAFFT** and **IQ-TREE** are installed and accessible in your environment (Or use executables).
+
+---
+
+## Output
+
+- A directory with the processed fasta files
+- A directory with the MSA files and corresponding treefiles (newick format)
+
+This prepares all data for the next pruning step with [PhyloPyPruner](https://github.com/davidemms/PhyloPyPruner).
+
+
 
 
 ## 12. Apply PhyloPyPruner Format
