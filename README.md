@@ -77,6 +77,7 @@ At Novogene:
 
 ## 1. FastQC & MultiQC
 [FastQC](https://github.com/s-andrews/FastQC) ([Simon Andrews](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)) was used as a quality control, as very bad samples (Either from our in-house or downloaded from the SRA set) were then identified to be removed. <br/>For more information on how FastQC was used within the project, go to [01_FASTQC](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/01_FastQC).</br></br> For more information on FastQC please go to their site http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+
 ---
 
 ## 2. Trinity *de novo* Assembly
