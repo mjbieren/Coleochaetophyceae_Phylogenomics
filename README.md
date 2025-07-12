@@ -290,7 +290,7 @@ Ensure that both **MAFFT** and **IQ-TREE** are installed and accessible in your 
 
 ## 12. Apply PhyloPyPruner Format (APPPFormat)
 
-Before pruning gene trees with **PhyloPyPruner**, the Newick tree files produced by **IQ-TREE** must be reformatted. This is because IQ-TREE alters the alignment headers during tree construction, removing species-strain delimiters (e.g., replacing `@` with `_`). The **APPPFormat** tool restores the correct format to these tree tips, ensuring compatibility with PhyloPyPruner.
+Before pruning gene trees with **PhyloPyPruner**, the Newick tree files produced by **IQ-TREE** must be reformatted. This is because IQ-TREE alters the alignment headers during tree construction, removing species-strain delimiters (e.g., replacing `@` with `_`). The [**APPPFormat**](https://github.com/mjbieren/ApplyPPPFormat/tree/main) tool restores the correct format to these tree tips, ensuring compatibility with PhyloPyPruner.
 
 This step prepares all required inputs for the next pruning step using [PhyloPyPruner](https://github.com/davidemms/PhyloPyPruner).
 
