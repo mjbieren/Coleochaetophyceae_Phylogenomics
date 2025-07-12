@@ -169,32 +169,83 @@ This step ensures that only high-confidence, taxonomically relevant sequences ar
 
 
 ## 8. BUSCO III
-The decontamination step is designed to be strict—favoring the removal of potential contaminants over the risk of keeping false positives. As a result, while it's effective at cleaning up the data, it can also lead to false negatives, where genuine sequences are mistakenly filtered out.
-Before we move on to inferring gene families (orthogroups) with OrthoFinder, we want to check how complete the transcriptomes are after decontamination. Some drop in completeness is expected, given how the filtering works. But this step helps us spot any samples that may have lost too much genomic content to be useful going forward.
+The decontamination step is designed to be stringent, prioritizing the removal of potential contaminants over the risk of generating false positives. As a result, while it's effective at cleaning up the data, it can also lead to false negatives, where genuine sequences are mistakenly filtered out.
+Before we proceed to inferring gene families (orthogroups) with OrthoFinder, we want to verify the completeness of the transcriptomes after decontamination. Some drop in completeness is expected, given how the filtering works. However, this step helps us identify any samples that may have lost too much genomic content to be useful as we advance.
+See [08_BUSCO_III](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/08_BUSCO_III) for more information.
 
-## 9. OrthoFinder
-For the next step, we have to run [OrthoFinder](https://github.com/davidemms/OrthoFinder) ([DM Emms and S Kelly 2019](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1832-y)) to obtain the OrtoGroups. For this we use a guide tree and all the positive samples we have, and included also our outgroups. <br/><br/>
-See [OrthoFinder](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/09_OrthoFinder) for a more in-depth overview of what we did.
+## 9. OrthoFinder – Orthogroup Inference
 
-## 10. OrthoGroup Sequence Grabber
-This is another tool I've created to obtain all the Fasta Blocks (fasta block = fasta header + sequence) for each OrthoGroup and create a Fasta output file. Furthermore, it can take into consideration how many taxonomic groups you want to have as a minimum for each Fasta File as a filter. <br/><br/>
-See [OSG](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/10_OrthogroupSequenceGrabber_OSG) for a more in-depth overview of what we did.
+In this step, we use [OrthoFinder](https://github.com/davidemms/OrthoFinder) ([Emms & Kelly, 2019](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1832-y)) to infer **orthogroups** from the transcriptome assemblies.
 
-In the pipeline, you will see two different sets as an output for OSG
-1. Outgroup Set
-2. Ingroup Set
+The analysis includes all high-quality, post-decontamination samples, along with selected outgroups. A precomputed species tree is provided to guide the inference process and improve the accuracy of orthology assignment.
 
-We later combine them (see COGS) to get a good representation of the IN and OUT groups.
+📂 For a detailed overview of the workflow, parameters, and input structure, see the script and documentation in:
+[Scripts/09_OrthoFinder](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/09_OrthoFinder)
 
-### Why two datasets?
-From past projects e.g. ([The Klebsormidiohyceae](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae)) we concluded that when using taxonomic group filtering you automatically create a bias for either the ingroup (species of interest) or the outgroup (your reference dataset). This can be seen as low/high branch support for the final phylogenomic trees. By combining the two datasets we (mostly) see a 100% branch support on every (ancestral) node. Hence why we decided to incorporate these two sets
 
-### Outgroup Set
-This was the original dataset we used within the preprint (on archive), however after our Reviewer pointed out that the In-Groups (Klebsormidiophyceae) had no great branch support but had great branch support for the out-group.
-For this set we used the Taxonomic Group file: [Klebsormidiophyceae_TaxonomicGroupFile_14_Taxa_420_set.txt](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/10_OrthogroupSequenceGrabber_OSG/TaxonomicGroupFiles/Klebsormidiophyceae_TaxonomicGroupFile_14_Taxa_420_set.txt) and used a threshold value of 10 (10/14 Taxonomic Groups had to be present).
+# Step 10: OrthoGroup Sequence Grabber (OSG)
 
-### New Set
-We basically started this set to define a good set that represents the In-Groups (Klebsormidiophyceae). Aka, have good branch support for them. For this set, we used the Taxonomic Group file: [Klebsormidiophyceae_TaxonomicGroupFile_4_Taxa.txt](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/10_OrthogroupSequenceGrabber_OSG/TaxonomicGroupFiles/Klebsormidiophyceae_TaxonomicGroupFile_4_Taxa.txt) and used a threshold value of 3 (3/4 Taxanomic Groups had to be present).
+The **[OrthoGroup Sequence Grabber (OSG)](https://github.com/mjbieren/OrthoGroup_Sequence_Grabber)** is a custom tool developed to extract all FASTA blocks (i.e., FASTA headers and sequences) corresponding to each orthogroup. The tool allows for flexible filtering based on a user-defined minimum number of taxonomic groups per orthogroup, ensuring that only well-represented gene families are selected for downstream analysis.
+
+📂 For detailed usage and implementation, see the full script and documentation:  
+[Scripts/10_OrthogroupSequenceGrabber_OSG](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/10_OrthogroupSequenceGrabber_OSG)
+
+---
+
+## 🧪 Output Overview
+
+The pipeline produces **two distinct datasets** from OSG:
+
+1. **Outgroup Set**  
+2. **Ingroup Set**
+
+These datasets are later combined during the **COGS** step to ensure balanced representation of both ingroup and outgroup taxa in the final alignment.
+
+---
+
+## ❓ Why Two Datasets?
+
+From previous projects (e.g., [Klebsormidiophyceae Phylogenomics](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae)), we observed that filtering orthogroups based on taxonomic group presence can introduce bias.  
+- Favoring **ingroup taxa** may reduce **outgroup support**.
+- Favoring **outgroup taxa** may weaken **ingroup resolution**.
+
+By generating and then **combining** both sets, we typically achieve **stronger branch support across the entire phylogenomic tree**, including ancestral nodes.
+
+---
+
+## 🌐 Dataset Details
+
+### 🔹 Outgroup Set
+
+The dataset that favors the outgroups of the dataset
+
+- **Taxonomic group file:**  
+  [`Coleocheatephyceae_TaxonomicGroupFile_Outgroup_set.txt`](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/10_OSG/TaxonomicGroupFiles/Coleocheatephyceae_TaxonomicGroupFile_Outgroup_set.txt)
+
+- **Threshold:**  
+  Minimum of 10 out of 14 taxonomic groups required per orthogroup.
+
+---
+
+### 🔹 Ingroup Set
+
+The dataset that favors the ingroup of the dataset (Aka the Coleochaetophyceae species)
+
+- **Taxonomic group file:**  
+  [`Coleocheatephyceae_TaxonomicGroupFile_Ingroup_Set.txt`](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/10_OSG/TaxonomicGroupFiles/Coleocheatephyceae_TaxonomicGroupFile_Ingroup_Set.txt)
+
+- **Threshold:**  
+  Minimum of 2 out of 4 taxonomic groups required per orthogroup.
+
+---
+
+## 🚀 Running the Tool
+
+You can execute the OSG program with a command like:
+
+```
+OSG.out -g [ORTHOGROUP_DIR] -f [FASTA_DIR] -g [TaxonomicGroupFile.txt] -t [THRESHOLD] -r [OUTPUT_DIR]
+```
 
 
 ## 11. MIAF
