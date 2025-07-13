@@ -339,18 +339,41 @@ For full implementation details and usage instructions, see the repository folde
 
 ---
 
-## 15. Combine OrthoGroup Sets
-After looking at the results of both sets, we concluded that the Old set was good for the out-groups but bad for the in-groups, and the new set was good for the in-groups but bad for the out-groups. We then decided to combine the Orthogroups of both sets together and restart the process from step 11. Another tool was created to just do that, which is called COGS.out (Combine OrthoGroup Sets). It uses the OrthoFinder output from Step 9, And the Fasta Output Folder path from Step 14 for both sets. It then automatically obtains the OrthoGroup names and references that back based on the OrthoFinder output .tsv files And obtains the corresponding Fasta Blocks like OSG does. 
+## Step 15: Combine Orthogroup Sets (COGS)
 
-See [CombineOrthoGroupSets_COGS](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/15_CombineOrthoGroupSets_COGS) for a more in-depth overview of what we did.
+After reviewing the orthogroup inference results, we observed complementary strengths between the two datasets:
 
-## 16. MAFFT/IQTree 
-See step 11
+- **The Outgroup Set** provided strong representation for **outgroup taxa** but underrepresented the ingroups.
+- **The Ingroup Set** offered excellent **ingroup coverage** but lacked outgroup diversity.
 
-## 17. Filter PPP Script 2
-See Step 12
+To leverage the strengths of both, we combined their orthogroups using the tool **[COGS](https://github.com/mjbieren/COGS/)** (Combine OrthoGroup Sets). This allowed us to create a more complete and representative dataset for downstream analyses.
 
-## 18. PhyloPyPruner
+---
+
+### How We Used COGS (Method 2)
+
+We used **Method 2** of COGS, which is optimized for speed and efficiency. It avoids re-aligning or re-inferring gene trees by reusing the output of earlier pipeline steps.
+
+#### Method 2 Workflow
+
+- **Input**: PhyloPyPruner output folders  
+  (Set 1 = Ingroup, Set 2 = Outgroup)
+
+- **Orthogroup Parsing**:  
+  COGS parsed orthogroup names from both sets and removed duplicates.
+
+- **Matching and Copying**:  
+  Using the input folders from PhyloPyPruner, COGS matched orthogroup names and copied the corresponding MSA and tree files to a combined output folder.
+
+- **Output**:  
+  A unified set of orthogroups ready for the next pipeline steps, without needing to rerun multiple intensive computations.
+
+---
+
+📁 **For a more detailed explanation and scripts, see:**  
+[`15_COGS`](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/15_COGS)
+
+## 16. PhyloPyPruner Combined set
 We did the same as step 13. We used the same parameters for the combined set as we did for the New Set: [PhyloPruner_I_Conda_Gandalf_CombinedSetTax21_New1.sh](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/13_Phylopypruner/Scripts/13_Phylopypruner/PhyloPruner_I_Conda_Gandalf_CombinedSetTax21_New1.sh). 
 
 ## 19. Filter the PhyloPyPruner Result
