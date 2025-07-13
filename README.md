@@ -348,7 +348,6 @@ After reviewing the orthogroup inference results, we observed complementary stre
 
 To leverage the strengths of both, we combined their orthogroups using the tool **[COGS](https://github.com/mjbieren/COGS/)** (Combine OrthoGroup Sets). This allowed us to create a more complete and representative dataset for downstream analyses.
 
----
 
 ### How We Used COGS (Method 2)
 
@@ -368,10 +367,11 @@ We used **Method 2** of COGS, which is optimized for speed and efficiency. It av
 - **Output**:  
   A unified set of orthogroups ready for the next pipeline steps, without needing to rerun multiple intensive computations.
 
----
-
 📁 **For a more detailed explanation and scripts, see:**  
 [`15_COGS`](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/15_COGS)
+
+---
+
 
 ## 16. PhyloPyPruner Combined set
 We did the same as step 13. We used the same parameters for the combined set as we did for the New Set: [PhyloPruner_I_Conda_Gandalf_CombinedSetTax21_New1.sh](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/13_Phylopypruner/Scripts/13_Phylopypruner/PhyloPruner_I_Conda_Gandalf_CombinedSetTax21_New1.sh). 
