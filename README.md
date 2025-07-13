@@ -323,15 +323,33 @@ For an overview of how we did it and example scripts for this project, go to [12
 
 ----
 
-## 13. PhyloPyPruner
-At this step, we remove all the paralogs from the OrtoGroups to get the desired species per OrthoGroup (Fasta file).
-For the different sets, we used different parameters, which can be found in the following scripts.
-1. Old Set: [PhyloPruner_I_Conda_Gandalf_Tax10.sh](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/13_Phylopypruner/Scripts/13_Phylopypruner/PhyloPruner_I_Conda_Gandalf_Tax10.sh)
-2. New Set: [PhyloPruner_I_Conda_Gandalf_CombinedSetTax21_New1.sh](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/13_Phylopypruner/Scripts/13_Phylopypruner/PhyloPruner_I_Conda_Gandalf_CombinedSetTax21_New1.sh)
+## 13. PhyloPyPruner – Prune Orthogroups
 
-<br/>See [PhyloPyPruner](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/13_Phylopypruner) for a more in-depth overview of what we did.
+In this step, we prune **paralogs** from each orthogroup to retain only **one representative gene per species**. This results in a refined dataset suitable for downstream phylogenomic analyses.
 
-<br/>To get more information on PhyloPyPruner please follow the website link https://pypi.org/project/phylopypruner/
+We use [**PhyloPyPruner**](https://pypi.org/project/phylopypruner/), a tool that infers orthologous relationships based on gene trees, to remove paralogs and retain high-confidence orthologs across all taxa.
+
+
+### 🧬 Input
+
+- Reformatted alignment and tree files produced in step 12 using [APPPFormat](https://github.com/mjbieren/ApplyPPPFormat).
+- Taxonomic group file.
+- Parameters tailored to the dataset and taxonomic scope.
+
+
+## 🧪 Output
+
+- Pruned FASTA files with **one ortholog per species**.
+- Summary statistics on pruned orthogroups and retained sequences.
+
+
+
+## 📎 More Information
+
+- For further details and context what settings we used during this project, see the full [13_PPP](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/13_PPP)
+- Learn more about the tool on [Phylopypruner](https://github.com/fethalen/phylopypruner) 
+
+---
 
 ## 14. Filter the PhyloPyPruner Result
 After Phylopypruner, we have to filter the result. This is due to the fact that how Phylopypruner works and basically prunes parts of the tree and creates sub-OrthoGroup files. E.g. N2_OG0000001**\_1**.fa and NN2_OG0000001**\_2**.fa. These files can have a low and high amount of species, but can underrepresent the taxonomic groups. Hence, we have to filter it again, to remove the ones that are below the Taxonomic Group threshold. For this we've created a tool called FilterPPPResult.out. Like OSG it takes a Taxonomic group file and filters the Files out that do not meet the Threshold. Furthermore, it can remove the Gene IDs (keep only the strain name) and remove the alignments from the sequences, which is needed for the PREQUAL step (later in the Pipeline).
