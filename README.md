@@ -219,38 +219,9 @@ From previous projects (e.g., [Klebsormidiophyceae Phylogenomics](https://github
 
 By generating and then **combining** both sets, we typically achieve **stronger branch support across the entire phylogenomic tree**, including ancestral nodes.
 
-
-### 🌐 Dataset Details
-
-#### 🔹 Outgroup Set
-
-The dataset that favors the outgroups of the dataset
-
-- **Taxonomic group file:**  
-  [`Coleocheatephyceae_TaxonomicGroupFile_Outgroup_set.txt`](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/10_OSG/TaxonomicGroupFiles/Coleocheatephyceae_TaxonomicGroupFile_Outgroup_set.txt)
-
-- **Threshold:**  
-  Minimum of 10 out of 14 taxonomic groups required per orthogroup.
+For a detailed overview of how we executed this step, see [10_OSG](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/10_OSG)
 
 
-#### 🔹 Ingroup Set
-
-The dataset that favors the ingroup of the dataset (Aka the Coleochaetophyceae species)
-
-- **Taxonomic group file:**  
-  [`Coleocheatephyceae_TaxonomicGroupFile_Ingroup_Set.txt`](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/10_OSG/TaxonomicGroupFiles/Coleocheatephyceae_TaxonomicGroupFile_Ingroup_Set.txt)
-
-- **Threshold:**  
-  Minimum of 2 out of 4 taxonomic groups required per orthogroup.
-
-
-### 🚀 Running the Tool
-
-You can execute the OSG program with a command like:
-
-```
-OSG.out -g [ORTHOGROUP_DIR] -f [FASTA_DIR] -g [TaxonomicGroupFile.txt] -t [THRESHOLD] -r [OUTPUT_DIR]
-```
 ---
 
 ## 11. MIAF – Mafft and IQ-TREE All Fasta Files
