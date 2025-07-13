@@ -1,6 +1,6 @@
 # 15. Combine Orthogroup Sets
 
-**COGS (Combine OrthoGroup Sets)** is a custom tool designed to merge two orthogroup datasets in a phylogenomic workflow. In our study on Klebsormidiophyceae, we encountered a situation where two orthogroup inference runs gave complementary results:
+**[COGS (Combine OrthoGroup Sets)](https://github.com/mjbieren/COGS)** is a custom tool designed to merge two orthogroup datasets in a phylogenomic workflow. In our study on Klebsormidiophyceae, we encountered a situation where two orthogroup inference runs gave complementary results:
 
 - The **Outgroup Set** included better representation for **outgroup taxa**, but had poor ingroup coverage.
 - The **Ingroup Set** offered strong **ingroup coverage**, but missed several key outgroup sequences.
