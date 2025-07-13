@@ -317,7 +317,7 @@ We use [**PhyloPyPruner**](https://pypi.org/project/phylopypruner/), a tool that
 
 ## 📎 More Information
 
-- For further details and context what settings we used during this project, see the full [13_PPP](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/13_PPP)
+- For further details and context what settings we used during this project, see [13_PPP](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/13_PPP)
 - Learn more about the tool on [Phylopypruner](https://github.com/fethalen/phylopypruner) 
 
 ---
