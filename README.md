@@ -322,7 +322,7 @@ We use [**PhyloPyPruner**](https://pypi.org/project/phylopypruner/), a tool that
 
 ---
 
-# Step 14: Filter the PhyloPyPruner Result
+## Step 14: Filter the PhyloPyPruner Result
 
 After running **PhyloPyPruner**, the resulting FASTA files need further filtering. This is because PhyloPyPruner prunes gene trees and may split orthogroups into subgroups (e.g., `N2_OG0000001_1.fa`, `N2_OG0000001_2.fa`). While these subgroups may contain multiple sequences, they can underrepresent the broader **taxonomic diversity** required for downstream analyses.
 
@@ -332,14 +332,12 @@ Additionally, `FilterPPPResult.out` can:
 - Strip gene identifiers from sequence headers (keeping only strain/species names)
 - Remove alignment gaps (`-` characters), which is useful for later steps such as **PREQUAL**
 
----
-
-## Learn More
+### Learn More
 
 For full implementation details and usage instructions, see the repository folder:  
 📁 [14_FPPPResult](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/14_FPPPResult)
 
-
+---
 
 ## 15. Combine OrthoGroup Sets
 After looking at the results of both sets, we concluded that the Old set was good for the out-groups but bad for the in-groups, and the new set was good for the in-groups but bad for the out-groups. We then decided to combine the Orthogroups of both sets together and restart the process from step 11. Another tool was created to just do that, which is called COGS.out (Combine OrthoGroup Sets). It uses the OrthoFinder output from Step 9, And the Fasta Output Folder path from Step 14 for both sets. It then automatically obtains the OrthoGroup names and references that back based on the OrthoFinder output .tsv files And obtains the corresponding Fasta Blocks like OSG does. 
