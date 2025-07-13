@@ -24,6 +24,8 @@ This approach significantly **reduced computational time and memory usage**, whi
 COGS_Static.out -s <PPP_INGROUP_OUTPUT> -x <PPP_INGROUP_INPUT> -t <FPPP_OUTGROUP_OUTPUT> -y <PPP_OUTGROUP_INPUT> [-p]
 ```
 
+For an example script see: [15_COGS.sh](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/15_COGS/15_COGS.sh)
+
 ### Options
 
 | Flag            | Description                                                                                       |
