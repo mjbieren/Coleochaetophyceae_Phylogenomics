@@ -308,29 +308,37 @@ We use [**PhyloPyPruner**](https://pypi.org/project/phylopypruner/), a tool that
 - Parameters tailored to the dataset and taxonomic scope.
 
 
-## 🧪 Output
+### 🧪 Output
 
 - Pruned FASTA files with **one ortholog per species**.
 - Summary statistics on pruned orthogroups and retained sequences.
 
 
 
-## 📎 More Information
+### 📎 More Information
 
 - For further details and context what settings we used during this project, see [13_PPP](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/13_PPP)
 - Learn more about the tool on [Phylopypruner](https://github.com/fethalen/phylopypruner) 
 
 ---
 
-## 14. Filter the PhyloPyPruner Result
-After Phylopypruner, we have to filter the result. This is due to the fact that how Phylopypruner works and basically prunes parts of the tree and creates sub-OrthoGroup files. E.g. N2_OG0000001**\_1**.fa and NN2_OG0000001**\_2**.fa. These files can have a low and high amount of species, but can underrepresent the taxonomic groups. Hence, we have to filter it again, to remove the ones that are below the Taxonomic Group threshold. For this we've created a tool called FilterPPPResult.out. Like OSG it takes a Taxonomic group file and filters the Files out that do not meet the Threshold. Furthermore, it can remove the Gene IDs (keep only the strain name) and remove the alignments from the sequences, which is needed for the PREQUAL step (later in the Pipeline).
-Different Taxonomic Group files and thresholds were used for the 2 different sets.
-1. Old Set: [Klebsormidiophyceae_TaxonomicGroupFile_3_Taxa_PrequalFilter.txt](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/10_OrthogroupSequenceGrabber_OSG/TaxonomicGroupFiles/Klebsormidiophyceae_TaxonomicGroupFile_3_Taxa_PrequalFilter.txt) with a 2 Threshold (2/3)
-2. New Set: [Klebsormidiophyceae_TaxonomicGroupFile_40_Taxa_AfterPPP_Tax21Set_AndCombinedSet.txt](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/10_OrthogroupSequenceGrabber_OSG/TaxonomicGroupFiles#:~:text=Klebsormidiophyceae_TaxonomicGroupFile_40_Taxa_AfterPPP_Tax21Set_AndCombinedSet.txt) with a 21 Threshold (21/40)
+# Step 14: Filter the PhyloPyPruner Result
 
-Scripts execution is the same for both.
+After running **PhyloPyPruner**, the resulting FASTA files need further filtering. This is because PhyloPyPruner prunes gene trees and may split orthogroups into subgroups (e.g., `N2_OG0000001_1.fa`, `N2_OG0000001_2.fa`). While these subgroups may contain multiple sequences, they can underrepresent the broader **taxonomic diversity** required for downstream analyses.
 
-See [FilterPPPResult](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/14_FilterPhylopypruner) for a more in-depth overview of what we did.
+To address this, we use a filtering tool: `FilterPPPResult.out`. This tool applies a user-defined **taxonomic group threshold**, ensuring that only orthogroup FASTA files with sufficient representation across taxa are retained.
+
+Additionally, `FilterPPPResult.out` can:
+- Strip gene identifiers from sequence headers (keeping only strain/species names)
+- Remove alignment gaps (`-` characters), which is useful for later steps such as **PREQUAL**
+
+---
+
+## Learn More
+
+For full implementation details and usage instructions, see the repository folder:  
+📁 [14_FPPPResult](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/14_FPPPResult)
+
 
 
 ## 15. Combine OrthoGroup Sets
