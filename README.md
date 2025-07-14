@@ -382,13 +382,15 @@ We applied consistent filtering criteria across all orthogroups to maintain data
 📄 For details on the command-line parameters and execution, refer to the directory:  
 [16_PPP_COGS](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/16_PPP_COGS)
 
+---
 
-## 19. Filter the PhyloPyPruner Result
-We did the same as in step 14, however, we used the Taxonomic Group file: [TaxonomicGroupFiles/Klebsormidiophyceae_TaxonomicGroupFile_4_Taxa.txt](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/10_OrthogroupSequenceGrabber_OSG/TaxonomicGroupFiles/Klebsormidiophyceae_TaxonomicGroupFile_4_Taxa.txt) with a 2 Threshold (2/4)
+## Step 17: Filter Final Orthogroups (FilterPPPResult)
 
-This way we filter out the OrthoGroup-sub files that are of irrelevance.
+To ensure only high-quality orthogroups proceed to downstream analyses, we filtered the PhyloPyPruner output using `FilterPPPResult`. Orthogroups were retained only if they included sequences from at least 10 of 28 defined taxonomic groups. We also removed gene IDs and alignment gaps for clarity, as the dataset now consists of single-copy orthologs. This step helps standardize input for alignment refinement and phylogenetic reconstruction.
 
-Furthermore, in this step, we also added the parameters -a -h, To remove the Gene IDs and the Gaps from the alignments since we need to realign the files with a different method in step 20.
+See [17_FPPPResult_COGS](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/17_FPPPRResult_COGS) for more info
+
+---
 
 ## 20. PREQUAL
 This step is needed since we want to remove the non-informative sites from each alignment file. So that when we concatenate all the files in one big alignment without having a lot of "noise". <br/>
