@@ -20,7 +20,7 @@ The image above illustrates the full computational pipeline used for transcripto
 This repository documents the pipeline developed for the **Coleochaetophyceae Phylogenomics Project**, from raw RNA-Seq data acquisition to phylogenetic inference.
 
 ---
-## 0. RNA-Seq Data Acquisition
+## Step 0. RNA-Seq Data Acquisition
 
 RNA-Seq data used in this project originated from two sources:
 
@@ -75,12 +75,12 @@ At Novogene:
 
 ---
 
-## 1. FastQC & MultiQC
+## Step 1: FastQC & MultiQC
 [FastQC](https://github.com/s-andrews/FastQC) ([Simon Andrews](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)) was used as a quality control, as very bad samples (Either from our in-house or downloaded from the SRA set) were then identified to be removed. <br/>For more information on how FastQC was used within the project, go to [01_FASTQC](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/01_FastQC).</br></br> For more information on FastQC please go to their site http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
 ---
 
-## 2. Trinity *de novo* Assembly
+## Step 2: Trinity *de novo* Assembly
 After FastQC quality control, all samples were then assembled with the Trinity pipeline. <br/>First, the adapters were trimmed with [Trimmomatic](https://github.com/usadellab/Trimmomatic) ([A. M Bolger et al_2014](https://academic.oup.com/bioinformatics/article/30/15/2114/2390096)) with the settings:
 ```
 -trimmomatic “novogene_adapter_sequences.fa:2:30:10:2:keepBothReads LEADING:3 TRAILING:3 MINLEN:36”
@@ -96,19 +96,19 @@ See [02_Trinity](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tr
 
 ---
 
-## 3. SuperTranscripts
+## Step 3: SuperTranscripts
 [SuperTranscripts](https://github.com/trinityrnaseq/trinityrnaseq/wiki/SuperTranscripts) ([Davidson *et al* 2017](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1284-1)) et al. was inferred by collapsing splicing isoforms using the Trinity implementation. <br/>See [SuperTranscripts](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/03_SuperTranscript) for a more in-depth overview of what we did.
 
 ---
 
-## 4. BUSCO I
+## Step 4: BUSCO I
 To assess the quality and completeness of our assemblies, we ran [BUSCO](https://busco.ezlab.org/) ([Seppey *et al.*, 2019](https://link.springer.com/protocol/10.1007/978-1-4939-9173-0_14)) using the `eukaryota_odb10` reference dataset.
 
 For a detailed description of the procedure and scripts used, please refer to the [04_BUSCO_I](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/04_BUSCO_I) directory.
 
 ---
 
-## 5. Protein Prediction with TransDecoder
+## Step 5: Protein Prediction with TransDecoder
 
 After generating the SuperTranscripts and confirming their completeness exceeds the 70% threshold, we proceeded to predict protein-coding sequences using [TransDecoder](https://github.com/TransDecoder/TransDecoder/wiki) ([Haas, BJ](https://github.com/TransDecoder/TransDecoder)).
 
@@ -121,14 +121,14 @@ For a detailed overview of the commands and workflow, see the [05_TransDecoder](
 
 ---
 
-## 6. BUSCO II
+## Step 6: BUSCO II
 As an additional quality control step, we reran BUSCO to verify that the completeness of the assemblies remained above the 70% threshold. This check was necessary because applying the `--single_best_only` option in TransDecoder occasionally resulted in a slight decrease in completeness scores.
 
 For a detailed overview of this step, please refer to the [06_BUSCO_II](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/06_BUSCO_II) directory.
 
 ---
 
-## 7. Decontamination
+## Step 7: Decontamination
 
 ### Setting Up the Decontamination
 
@@ -175,14 +175,14 @@ This step ensures that only high-confidence, taxonomically relevant sequences ar
 
 ---
 
-## 8. BUSCO III
+## Step 8: BUSCO III
 The decontamination step is designed to be stringent, prioritizing the removal of potential contaminants over the risk of generating false positives. As a result, while it's effective at cleaning up the data, it can also lead to false negatives, where genuine sequences are mistakenly filtered out.
 Before we proceed to inferring gene families (orthogroups) with OrthoFinder, we want to verify the completeness of the transcriptomes after decontamination. Some drop in completeness is expected, given how the filtering works. However, this step helps us identify any samples that may have lost too much genomic content to be useful as we advance.
 See [08_BUSCO_III](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/08_BUSCO_III) for more information.
 
 ---
 
-## 9. OrthoFinder – Orthogroup Inference
+## Step 9: OrthoFinder – Orthogroup Inference
 
 In this step, we use [OrthoFinder](https://github.com/davidemms/OrthoFinder) ([Emms & Kelly, 2019](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1832-y)) to infer **orthogroups** from the transcriptome assemblies.
 
@@ -224,7 +224,7 @@ For a detailed overview of how we executed this step, see [10_OSG](https://githu
 
 ---
 
-## 11. MIAF – Mafft and IQ-TREE All Fasta Files
+## Step 11: MIAF – Mafft and IQ-TREE All Fasta Files
 
 Once orthogroups have been identified, it's common to observe **paralogs** within these groups. To refine these orthogroups for downstream phylogenetic analysis, we use **PhyloPyPruner**, which requires precomputed multiple sequence alignments and gene trees.
 
@@ -259,7 +259,7 @@ Ensure that both **MAFFT** and **IQ-TREE** are installed and accessible in your 
 
 ---
 
-## 12. Apply PhyloPyPruner Format (APPPFormat)
+## Step 12: Apply PhyloPyPruner Format (APPPFormat)
 
 Before pruning gene trees with **PhyloPyPruner**, the Newick tree files produced by **IQ-TREE** must be reformatted. This is because IQ-TREE alters the alignment headers during tree construction, removing species-strain delimiters (e.g., replacing `@` with `_`). The [**APPPFormat**](https://github.com/mjbieren/ApplyPPPFormat/tree/main) tool restores the correct format to these tree tips, ensuring compatibility with PhyloPyPruner.
 
@@ -294,7 +294,7 @@ For an overview of how we did it and example scripts for this project, go to [12
 
 ----
 
-## 13. PhyloPyPruner – Prune Orthogroups
+## Step 13: PhyloPyPruner – Prune Orthogroups
 
 In this step, we prune **paralogs** from each orthogroup to retain only **one representative gene per species**. This results in a refined dataset suitable for downstream phylogenomic analyses.
 
