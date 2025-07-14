@@ -20,7 +20,7 @@ The image above illustrates the full computational pipeline used for transcripto
 This repository documents the pipeline developed for the **Coleochaetophyceae Phylogenomics Project**, from raw RNA-Seq data acquisition to phylogenetic inference.
 
 ---
-## Step 0. RNA-Seq Data Acquisition
+## Step 0: RNA-Seq Data Acquisition
 
 RNA-Seq data used in this project originated from two sources:
 
