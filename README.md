@@ -379,8 +379,8 @@ In this step, we refine the combined orthogroup dataset by removing remaining pa
 
 We applied consistent filtering criteria across all orthogroups to maintain data quality and comparability between taxa.
 
-📄 For details on the command-line parameters and execution, refer to the script:  
-[16_PhyloPruner_I_Conda_COGS.sh](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/16_PPP_COGS/16_PhyloPruner_I_Conda_COGS.sh)
+📄 For details on the command-line parameters and execution, refer to the directory:  
+[16_PPP_COGS](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/16_PPP_COGS)
 
 
 ## 19. Filter the PhyloPyPruner Result
