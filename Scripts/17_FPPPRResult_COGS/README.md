@@ -6,9 +6,13 @@ This tool evaluates each aligned orthogroup from the PhyloPyPruner output and re
 
 For this project, we applied a threshold of at least **10 out of 28** taxonomic groups.
 
-📄 The same taxonomic group file was used for
+Additionally, we used the `-a` and `-h` parameters to:
+- `-a`: remove alignment gaps (`-`) from the sequences.
+- `-h`: remove gene IDs from the FASTA headers, since all entries now represent single-copy orthologs.
+
+📄 The same taxonomic group file was used for filtering the combined set
 See:  
 [`Coleocheatephyceae_TaxonomicGroupFile_FilterPPP_Set.txt`](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/14_FPPPResult/Coleocheatephyceae_TaxonomicGroupFile_FilterPPP_Set.txt)
 
-As an example see:
-[17_FilterPPP_Result_AndRemoveHeadersNumbers_COGS](
+📜 Example script:  
+[`17_FilterPPP_Result_AndRemoveHeadersNumbers_COGS.sh`](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/17_FPPPRResult_COGS/17_FilterPPP_Result_AndRemoveHeadersNumbers_COGS.sh)
