@@ -373,8 +373,15 @@ We used **Method 2** of COGS, which is optimized for speed and efficiency. It av
 ---
 
 
-## 16. PhyloPyPruner Combined set
-We did the same as step 13. We used the same parameters for the combined set as we did for the New Set: [PhyloPruner_I_Conda_Gandalf_CombinedSetTax21_New1.sh](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/13_Phylopypruner/Scripts/13_Phylopypruner/PhyloPruner_I_Conda_Gandalf_CombinedSetTax21_New1.sh). 
+## Step 16: Paralog Pruning with PhyloPyPruner
+
+In this step, we refine the combined orthogroup dataset by removing remaining paralogs using [PhyloPyPruner](https://github.com/fethalen/phylopypruner), developed by Dr. Felicia Sandberg. This ensures that only reliable single-copy orthologs are retained for downstream phylogenomic analyses.
+
+We applied consistent filtering criteria across all orthogroups to maintain data quality and comparability between taxa.
+
+📄 For details on the command-line parameters and execution, refer to the script:  
+[16_PhyloPruner_I_Conda_COGS.sh](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/16_PPP_COGS/16_PhyloPruner_I_Conda_COGS.sh)
+
 
 ## 19. Filter the PhyloPyPruner Result
 We did the same as in step 14, however, we used the Taxonomic Group file: [TaxonomicGroupFiles/Klebsormidiophyceae_TaxonomicGroupFile_4_Taxa.txt](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/blob/main/Scripts/10_OrthogroupSequenceGrabber_OSG/TaxonomicGroupFiles/Klebsormidiophyceae_TaxonomicGroupFile_4_Taxa.txt) with a 2 Threshold (2/4)
