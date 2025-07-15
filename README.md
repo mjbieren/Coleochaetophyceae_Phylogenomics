@@ -405,8 +405,6 @@ See [18_PREQUAL](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tr
 ---
 
 ## Step 19: Concatenating the alignment file.
-# Concatenate Alignments
-
 This step concatenates all alignments using [phyx](https://github.com/FePhyFoFum/phyx) ([JW Brown *et al*, 2017](https://academic.oup.com/bioinformatics/article/33/12/1886/2975328)), a tool for phylogenetic analysis of trees and sequences.
 
 For a more detailed overview, see the [19_Concatenation](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/19_Concatenation) folder.
@@ -422,17 +420,28 @@ C: Run IQ-TREE PMSF using the LG+C60 model
 
 For more details, see the [20_IQtree](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/20_IQTree) directory.
 
+---
 
 ## Step 21: ITOL
 xxx
 
+---
+
 ## Step 22: TimeTree
+
+---
 
 ## Step 23: AU Test
 
+---
+
 ## Step 24: ACSR
 
+---
+
 ## Step 25: Differential expression interpretation for Orthogroups
+
+---
 
 ## Step 26: Gene Family analysis
 
