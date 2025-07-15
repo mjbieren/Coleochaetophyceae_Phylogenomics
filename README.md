@@ -392,7 +392,7 @@ See [17_FPPPResult_COGS](https://github.com/mjbieren/Coleochaetophyceae_Phylogen
 
 ---
 
-## 18. PREQUAL
+## Step 18: PREQUAL
 This step is necessary because we want to remove non-informative sites from each alignment file. So that when we concatenate all the files in one big alignment, without having a lot of "noise". <br/>
 During this step, multiple programs were run:
 1. [PREQUAL](https://github.com/simonwhelan/prequal) ([Simon Whelan *et al* 2018](https://academic.oup.com/bioinformatics/article/34/22/3929/5026659))
@@ -402,43 +402,39 @@ During this step, multiple programs were run:
 
 See [18_PREQUAL](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/18_PREQUAL) for a more in-depth overview of what we did.
 
-## 19. Concatenating the alignment file.
-We did this step to concatenate all the alignments. We used [Phyx](https://github.com/FePhyFoFum/phyx) ([JW Brown *et al* 2017](https://academic.oup.com/bioinformatics/article/33/12/1886/2975328)) a tool that performs phylogenetic analysis on trees and sequences.
+---
 
-See [ConcatenateSequences](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/17_ConcatenateSequences) for a more in-depth overview of what we did.
+## Step 19: Concatenating the alignment file.
+# Concatenate Alignments
 
-## 22 ClipKIT
-After looking at the concatenated alignment we confirmed that there were still a lot of non-informative sites within the sequences. That is why we run ClipKIT with the option -g 0.65. <br/>
-We used 65, because any lower, we removed too many informative sites,  and higher, we had too many non-informative sites. This can be different from yours so play a bit around with the value to find the optimum for you.
+This step concatenates all alignments using [phyx](https://github.com/FePhyFoFum/phyx) ([JW Brown *et al*, 2017](https://academic.oup.com/bioinformatics/article/33/12/1886/2975328)), a tool for phylogenetic analysis of trees and sequences.
 
-See [ClipKIT](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/18_Clipkit) for a more in-depth overview of what we did.
+For a more detailed overview, see the [19_Concatenation](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/19_Concatenation) folder.
 
-## 23 ModelFinder
-To determine what the best tree model for our concatenated alignment was, we ran [ModelFinder](http://www.iqtree.org/ModelFinder/) ([S Kalyaanamoorthy *et al* 2017](https://www.nature.com/articles/nmeth.4285) with  IQtree V1.6.12. See [IQtree Exectuables](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Executables/IQTree)
-```
-iqtree -nt 20 -m TESTONLY -madd LG+C60 -msub nuclear -s [AlignmentFileInput]
-```
+---
 
-According to the result (See [ModelFinder Results](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/19_IQTree/Examples/ModelFinder)) LG+C60 was the best fitting model for our alignment so this was used in step 24.
+## Step 20: Final Tree Inference
+
+This step is divided into three parts:  
+A: Use ModelFinder to select the best-fit model  
+B: Run IQ-TREE with the selected model  
+C: Run IQ-TREE PMSF using the LG+C60 model  
+
+For more details, see the [20_IQtree](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/20_IQTree) directory.
 
 
-## 24 IQTree
-After step 3, we then placed the model into the script and started IQTree with the parameters: (we use IQTree V2.0.6 for this step. See [IQtree Exectuables](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Executables/IQTree) )
-```
-iqtree2 -nt 50 -m LG+C60 -msub nuclear -s [Alignment_File_Output_Step22] -bb 1000 -alrt 1000 -pre [Your_Choice_Of_Prefix_For_Output_File]
-```
-On the result of the step above, we then perform a posterior mean site frequency (PMSF)  as a rapid and efficient approximation to a full empirical profile mixture model for ML analysis ([H.C. Wang _et al_](https://academic.oup.com/sysbio/article/67/2/216/4076233) ).
+## Step 21: ITOL
+xxx
 
-```
-iqtree2 -nt 20 -m LG+C60+F+G -msub nuclear -s [Alignment_File_Output_Step22] -bb 1000 -alrt 1000 -pre [Your_Choice_Of_Prefix_For_Output_File] -ft [Result_Step_Above]
-```
+## Step 22: TimeTree
 
->[!NOTE]
->Furthermore, we also used the LG+F+I+G model since that was the initial tree model from the old set. However, after running PMSF on that tree output, the resulting tree of the PMSF is the same as the result above. (results not shown)
+## Step 23: AU Test
 
-# Ancestor Character State Reconstruction
-After the pipeline, we use the tree to do some Ancestor Character State Reconstruction with the R package [phytools](https://github.com/liamrevell/phytools) ([L.J. Revell 2012](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/j.2041-210X.2011.00169.x) based on different states (morphology, habitat, occurrence) per species.<br/><br/>
-See [ACSR](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/ACSR) for more information on how we did this.
+## Step 24: ACSR
+
+## Step 25: Differential expression interpretation for Orthogroups
+
+## Step 26: Gene Family analysis
 
 
 # Notes for future development
@@ -448,7 +444,4 @@ Either with the help of a High-Performance Cluster or a single High-Performance 
 
 
 # Citing
-If you use anything within this repository, please cite
-```
-Maaike J. Bierenbroodspot, Tatyana Darienko, Sophie de Vries, Janine M.R. Fürst-Jansen, Henrik Buschmann, Thomas Pröschold, Iker Irisarri, Jan de Vries. Phylogenomic insights into the first multicellular streptophyte. bioRxiv [Preprint. 2023 Nov 1: 2023.11.01.564981. doi: 10.1101/2023.11.01.564981
-```
+If you use anything within this repository, please cite coming :)
