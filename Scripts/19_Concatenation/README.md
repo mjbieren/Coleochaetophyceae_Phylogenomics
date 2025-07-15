@@ -15,4 +15,7 @@ And run with:
 ```
 pxcat -s *.[FILE_EXTENSION] -p [OUTPUT_File].output_partition_file -o [OUTPUT_File].[FILE_EXTENSION]
 ```
+
+
 See [19_Concatenate_phyx.sh](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/19_Concatenation/19_Concatenate_phyx.sh) for an example script.
+
