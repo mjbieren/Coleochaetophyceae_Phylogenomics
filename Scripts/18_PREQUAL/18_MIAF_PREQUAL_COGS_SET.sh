@@ -47,6 +47,6 @@ THREAD_PER_JOB=2 #meaning 50x2 threads are running (aka 100, we have 256 on Gand
 ${MIAF_PATH} -i ${INPUT} -r ${OUTPUT} -m ${MAFFT} -c ${JOB_LIMIT} -x ${THREAD_PER_JOB} -s ${SYTEMTYPE} -p
 
 #With IQtree
-${MIAF_PATH} -i ${INPUT} -r ${OUTPUT} -m ${MAFFT} -c ${JOB_LIMIT} -x ${THREAD_PER_JOB} -s ${SYTEMTYPE} -q ${IQTree} -pi
+#${MIAF_PATH} -i ${INPUT} -r ${OUTPUT} -m ${MAFFT} -c ${JOB_LIMIT} -x ${THREAD_PER_JOB} -s ${SYTEMTYPE} -q ${IQTree} -pi
 
 conda deactivate
