@@ -392,16 +392,17 @@ See [17_FPPPResult_COGS](https://github.com/mjbieren/Coleochaetophyceae_Phylogen
 
 ---
 
-## 20. PREQUAL
-This step is needed since we want to remove the non-informative sites from each alignment file. So that when we concatenate all the files in one big alignment without having a lot of "noise". <br/>
+## 18. PREQUAL
+This step is necessary because we want to remove non-informative sites from each alignment file. So that when we concatenate all the files in one big alignment, without having a lot of "noise". <br/>
 During this step, multiple programs were run:
 1. [PREQUAL](https://github.com/simonwhelan/prequal) ([Simon Whelan *et al* 2018](https://academic.oup.com/bioinformatics/article/34/22/3929/5026659))
 2. [ginsi](https://mafft.cbrc.jp/alignment/software/) ([K. Katoh and D.M. Standley 2013](https://academic.oup.com/mbe/article/30/4/772/1073398))
-3. [IQTree](http://www.iqtree.org/) ([Bui Quang Minh *et al* 2020](https://academic.oup.com/mbe/article/37/8/2461/5859215))
-4. [ClipKIT](https://github.com/JLSteenwyk/ClipKIT) ([J.L. Steenwijk *et al* 2020](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3001007)<br/>
-See [Prequal](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/16_Prequal) for a more in-depth overview of what we did.
+3. [ClipKIT](https://github.com/JLSteenwyk/ClipKIT) ([J.L. Steenwijk *et al* 2020](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3001007)<br/>
+4. *[IQTree](http://www.iqtree.org/) ([Bui Quang Minh *et al* 2020](https://academic.oup.com/mbe/article/37/8/2461/5859215)) optional*
 
-## 21. Concatenating alignments file.
+See [18_PREQUAL](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/18_PREQUAL) for a more in-depth overview of what we did.
+
+## 19. Concatenating the alignment file.
 We did this step to concatenate all the alignments. We used [Phyx](https://github.com/FePhyFoFum/phyx) ([JW Brown *et al* 2017](https://academic.oup.com/bioinformatics/article/33/12/1886/2975328)) a tool that performs phylogenetic analysis on trees and sequences.
 
 See [ConcatenateSequences](https://github.com/mjbieren/Phylogenomics_klebsormidiophyceae/tree/main/Scripts/17_ConcatenateSequences) for a more in-depth overview of what we did.
