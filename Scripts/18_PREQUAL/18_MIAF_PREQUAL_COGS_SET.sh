@@ -33,6 +33,8 @@ OUTPUT= #Change this
 #MAFFT
 MAFFT=~/Programs/mafft-linux64/mafft.bat
 
+IQTree=iqtree
+
 SYTEMTYPE=n #Don't touch on gandalf!!!
 
 #JOB Limit
@@ -41,7 +43,10 @@ JOB_LIMIT=50 #will run 50 jobs at the same time
 #threads used in MAFFT and other tools
 THREAD_PER_JOB=2 #meaning 50x2 threads are running (aka 100, we have 256 on Gandalf be AWARE!!!)
 
-
+#Without IQtree
 ${MIAF_PATH} -i ${INPUT} -r ${OUTPUT} -m ${MAFFT} -c ${JOB_LIMIT} -x ${THREAD_PER_JOB} -s ${SYTEMTYPE} -p
+
+#With IQtree
+${MIAF_PATH} -i ${INPUT} -r ${OUTPUT} -m ${MAFFT} -c ${JOB_LIMIT} -x ${THREAD_PER_JOB} -s ${SYTEMTYPE} -q ${IQTree} -pi
 
 conda deactivate
