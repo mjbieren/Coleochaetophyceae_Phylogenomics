@@ -1,4 +1,4 @@
-#22. Time tree analysis with MCMCtree
+# 22. Time tree analysis with MCMCtree
 
 This step was done with the PALm package xxx. cscsd
 
