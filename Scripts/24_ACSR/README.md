@@ -1,6 +1,6 @@
 # 24. Ancestral Character State Reconstruction (ACSR)
 
-This repository contains scripts for performing **Ancestral Character State Reconstruction (ACSR)**, designed explicitly for the Coleochaetophyceae phylogenomics project.
+For the Coleochaetophyceae, we aimed to conduct an **Ancestral Character State Reconstruction (ACSR)**on several key characteristics, specifically for the Coleochaetophyceae phylogenomics project.
 
 ## Overview
 
@@ -12,7 +12,7 @@ ACSR is used here to infer ancestral states across phylogenetic trees by analyzi
 - Handles **multiple distinct states** relevant to the dataset.
 - Tailored for phylogenomic data from the Coleochaetophyceae set.
 
-## Repository Location
+## Relevant data location
 
 All relevant scripts and resources can be found at:
 
