@@ -1,5 +1,5 @@
 
-# MCMCTree – Time Tree Estimation (Part 2)
+#22. MCMCTree – Time Tree Estimation
 
 This guide describes how to run **MCMCTree** (from the [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) package) to estimate divergence times using a relaxed molecular clock, a maximum likelihood tree, and calibration constraints.
 
