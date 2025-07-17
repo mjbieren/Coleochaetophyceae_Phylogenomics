@@ -460,20 +460,42 @@ See [21_ITOL](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/
 
 ## Step 22: TimeTree
 
+This step estimates divergence times across Coleochaetophyceae using MCMCTree from the PAML package.
+After preparing a relaxed PHYLIP alignment and a constrained guide tree (with fossil-based calibrations), the workflow runs in two stages:
 
+* Step 1 estimates gradient and Hessian values using the sequence data.
+
+* Step 2 performs Bayesian time tree estimation using MCMC sampling.
+
+The final result is a time-calibrated phylogeny. Convergence and node age distributions are assessed using tools like Tracer and visualized via FigTree or iTOL.
+
+🧭 Result: A fully dated phylogenetic tree for downstream interpretation.
+
+see [22_TimeTree](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/edit/main/Scripts/22_TimeTree/) for more information
 
 ---
 
 ## Step 23: AU Test
+In this step, we used IQ-TREE v2 to conduct an Approximately Unbiased (AU) test on alternative phylogenetic hypotheses within the Coleochaetophyceae clade. Multiple constrained trees (I–VI) were tested against the unconstrained maximum likelihood (ML) tree using AU, SH, KH, and other likelihood-based tests.
+
+✅ All constrained topologies were statistically rejected (p-AU < 0.05), supporting the robustness of the unconstrained ML tree and confirming no better-supported alternative topologies exist for the tested clades.
+
+See [23_AU_Test](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/23_AU_Test) for more information
 
 ---
 
-## Step 24: ACSR
+## Step 24: Ancestral Character State Reconstruction (ACSR)
+
+This step involves reconstructing ancestral trait states through maximum likelihood estimation using a symmetric model. We utilize the ape::ace() function, along with the phytools R package, to map discrete character states onto the phylogenetic tree.
+The results include pie-chart visualizations at internal nodes and corresponding likelihood scores.
+
+For further details, visit  [24_ACSR](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/24_ACSR) for more information
 
 ---
 
 ## Step 25: Differential expression interpretation for Orthogroups
-D
+In this step, we explore variation in gene expression across Coleochaetophyceae orders using TPM estimates. After quantifying transcripts with Kallisto, the tool [GTVO](https://github.com/mjbieren/GTVO/) is used to summarize TPM values for each orthogroup (HOG), integrating OrthoFinder outputs and renamed headers. While exploratory in nature, this analysis helps identify genes with order-specific expression patterns.
+See [25_Differential_Expression]https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/25_DE) for an overview.
 
 ---
 
