@@ -39,6 +39,10 @@ Once the TPM files are generated, we use [GTVO](https://github.com/mjbieren/GTVO
 GTVO_Static_Debian.out -f <PPP_OUTPUT> -p <FPPP_OUTPUT> -c <PROTEIN_CHANGED_NAMES_FOLDER> -t <TPM_VALUES> -g <TAXONOMICGROUP_FILE> -o <ORTHOFINDER_OUTPUT_FOLDER> -x <PREFIX_OUTPUT> -r <OUTPUT_FOLDER>
 ```
 
+➡️ Example script: 
+[25B_GTVO_Example.sh](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/25_DE/25B_GTVO_Example.sh)
+
+
 This will generate expression summary tables showing TPM values across species for each orthogroup. These tables can be analyzed for patterns in gene activity among Coleochaetophyceae orders.
 
 ---
