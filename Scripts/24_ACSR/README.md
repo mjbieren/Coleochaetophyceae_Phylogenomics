@@ -87,6 +87,13 @@ plotTree(tree, fsize=0.8, ftype="i")
 nodelabels(node=1:tree$Nnode + Ntip(tree),
            pie=fitORDERED$lik.anc, piecol=cols, cex=0.5)
 tiplabels(pie=to.matrix(x, sort(unique(x))), piecol=cols, cex=0.2)
+
+#Print the probabilities to screen
+print(fitORDERED$lik.anc)
+
+#Which node is what
+plotTree(tree,fsize=0.8,ftype="i",node.numbers=TRUE)
+
 ```
 
 
