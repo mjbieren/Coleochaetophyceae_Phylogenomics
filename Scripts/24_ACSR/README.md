@@ -27,10 +27,10 @@ Each character (trait) may have a different number of possible states, but the s
 ## 📁 Scripts & Data
 
 All scripts and trait data for the ACSR analysis can be found here:  
-🔗 [Scripts/24_ACSR](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/24_ACSR)
+🔗 [R_Scripts](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/24_ACSR/R_Scripts)
 
 Contents include:
-- Trait tables (`*.csv`)
+- Trait tables (`*.tsv`)
 - R scripts for likelihood reconstruction and visualization
 - Tree file input (inferred ML tree from previous steps)
 - Color palettes and plotting functions
