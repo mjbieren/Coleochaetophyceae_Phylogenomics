@@ -40,7 +40,7 @@ Contents include:
 ## ⚙️ Method Overview
 
 1. **Prepare Trait Data**
-   - Traits are scored manually and saved in a `.csv` format.
+   - Traits are scored manually and saved in a `.tsv` format.
    - Each row corresponds to a taxon; each column is a character.
 
 2. **Load Tree and Traits in R**
