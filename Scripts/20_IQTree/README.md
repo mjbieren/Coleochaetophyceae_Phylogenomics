@@ -2,9 +2,9 @@
 
 This step performs **phylogenetic tree inference** using **IQ-TREE 3**, with **ModelFinder**, **C60 models**, and the **PMSF method** for better accuracy on large datasets. 
 
-⚠️ **Important note (as of 4 July 2025):**  
+⚠️ **Important note IQ-Tree and the -madd option (as of 26 June 2025):**  
 IQ-TREE v3 fixes a known bug with the `-madd` option in its *GitHub version only*. It is **not yet available** in their formal release.  
-To use `-madd` properly, you must [build IQ-TREE 3 manually from GitHub](https://github.com/iqtree/iqtree3). You can find a pre-compiled IQTree3 in this directory ([iqtree3](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/20_IQTree/iqtree3), based on the GitHub repository. But it has only been tested on a Debian system..
+To use `-madd` properly, you must [build IQ-TREE 3 manually from GitHub](https://github.com/iqtree/iqtree3). You can find a pre-compiled IQTree3 in this directory ([iqtree3](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/20_IQTree/iqtree3)), based on the GitHub repository. But it has only been tested on a Debian system.
 
 ---
 
