@@ -29,7 +29,7 @@ iqtree3 -nt <THREADS> -m MF -madd LG+C60 -msub nuclear -s <INPUT_ALIGNMENT.fasta
 
 📌 This step outputs the best model (e.g. `LG+C60+F+G` or `LG+F+I+G4`), which is used for further inference.
 
-Example script: (20A_Final_IQ_Tree_ModelFinder.sh)[https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/20_IQTree/20A_Final_IQ_Tree_ModelFinder.sh]
+Example script: [20A_Final_IQ_Tree_ModelFinder.sh](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/blob/main/Scripts/20_IQTree/20A_Final_IQ_Tree_ModelFinder.sh)
 
 Additionally, you can skip `Step 2` by using `-m MFP` instead of `-m MF`, and add ultrafast bootstrap and SH-aLRT tests by `-bb 1000` and `-alrt 1000` respectively.
 
