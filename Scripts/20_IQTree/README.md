@@ -1,4 +1,4 @@
-# Step 19 – Phylogenetic Tree Inference with IQ-TREE 3
+# 20. Phylogenetic Tree Inference with IQ-TREE 3
 
 This step performs **phylogenetic tree inference** using **IQ-TREE 3**, with **ModelFinder**, **C60 models**, and the **PMSF method** for better accuracy on large datasets. 
 
@@ -13,7 +13,7 @@ To use `-madd` properly, you must [build IQ-TREE 3 manually from GitHub](https:/
 ### 1. Run ModelFinder to Determine Best-Fitting Substitution Model
 
 ```bash
-iqtree3 -nt <THREADS>         -m MF         -madd LG+C60         -msub nuclear         -s <INPUT_ALIGNMENT.fasta>         -pre <OUTPUT_PREFIX>         -mem <MEMORY_MB>
+iqtree3 -nt <THREADS> -m MF -madd LG+C60 -msub nuclear -s <INPUT_ALIGNMENT.fasta> -pre <OUTPUT_PREFIX> -mem <MEMORY_MB_GB>
 ```
 
 #### 🔍 Explanation of Parameters:
@@ -25,9 +25,10 @@ iqtree3 -nt <THREADS>         -m MF         -madd LG+C60         -msub nuclear  
 | `-msub nuclear`  | Specifies substitution models for **nuclear DNA** |
 | `-s`             | Input **aligned** sequence file (FASTA or PHYLIP format) |
 | `-pre`           | Prefix for all output files |
-| `-mem`           | Maximum memory usage in MB |
+| `-mem`           | Maximum memory usage in MB or G |
 
-📌 This step outputs the best model (e.g. `LG+C60+F+G`) which is used for further inference.
+📌 This step outputs the best model (e.g. `LG+C60+F+G` or `LG+F+I+G4`), which is used for further inference.
+
 
 ---
 
@@ -35,18 +36,24 @@ iqtree3 -nt <THREADS>         -m MF         -madd LG+C60         -msub nuclear  
 
 If you skipped `Step 1`, you can let IQ-TREE **automatically select and infer** the tree in one go:
 
-```bash
-iqtree3 -nt <THREADS>         -m MFP         -msub nuclear         -s <INPUT_ALIGNMENT.fasta>         -pre <OUTPUT_PREFIX>         -mem <MEMORY_MB>
+```
+iqtree3 -nt <THREADS> -m MFP -msub nuclear -s <INPUT_ALIGNMENT.fasta> -pre <OUTPUT_PREFIX> -mem <MEMORY_MB>
 ```
 
 🧠 **MFP = ModelFinder Plus**, which finds the best-fit model and continues with full tree inference.
+
+otherwise it's
+
+```
+iqtree3 -nt <THREADS> -m <ModelFinder_BestModelOutput> -msub nuclear -s <INPUT_ALIGNMENT.fasta> -pre <OUTPUT_PREFIX> -mem <MEMORY_MB>
+```
 
 ---
 
 ### 3. Use PMSF Model for Final Tree Inference with Ultrafast Bootstrap and SH-aLRT
 
-```bash
-iqtree3 -nt <THREADS>         -m LG+C60+F+G         -msub nuclear         -s <INPUT_ALIGNMENT.fasta>         -bb 1000         -alrt 1000         -pre <OUTPUT_PREFIX>         -ft <TREE_FROM_STEP2.treefile>         -mem <MEMORY_MB>
+```
+iqtree3 -nt <THREADS> -m LG+C60+F+G -msub nuclear -s <INPUT_ALIGNMENT.fasta> -bb 1000 -alrt 1000 -pre <OUTPUT_PREFIX> -ft ,TREE_FROM_STEP2.treefile> -mem <MEMORY_MB>
 ```
 
 #### 🔍 Parameter Breakdown:
@@ -70,8 +77,6 @@ iqtree3 -nt <THREADS>         -m LG+C60+F+G         -msub nuclear         -s <IN
 - `<OUTPUT_PREFIX>.treefile`: Final best-scoring tree
 - `<OUTPUT_PREFIX>.log`: Log file of the IQ-TREE run
 - `<OUTPUT_PREFIX>.iqtree`: Model and tree summary
-- `<OUTPUT_PREFIX>.ufboot`: Bootstrap trees
-- `<OUTPUT_PREFIX>.alrt`: SH-aLRT support values
 
 ---
 
