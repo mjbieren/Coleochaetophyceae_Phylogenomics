@@ -37,7 +37,7 @@ iqtree3 -nt <THREADS> -m MF -madd LG+C60 -msub nuclear -s <INPUT_ALIGNMENT.fasta
 If you skipped `Step 1`, you can let IQ-TREE **automatically select and infer** the tree in one go:
 
 ```
-iqtree3 -nt <THREADS> -m MFP -msub nuclear -s <INPUT_ALIGNMENT.fasta> -pre <OUTPUT_PREFIX> -mem <MEMORY_MB>
+iqtree3 -nt <THREADS> -m MFP -msub nuclear -s <INPUT_ALIGNMENT.fasta> -pre <OUTPUT_PREFIX> -mem <MEMORY_MB> -bb 1000 -alrt 1000
 ```
 
 🧠 **MFP = ModelFinder Plus**, which finds the best-fit model and continues with full tree inference.
@@ -45,7 +45,7 @@ iqtree3 -nt <THREADS> -m MFP -msub nuclear -s <INPUT_ALIGNMENT.fasta> -pre <OUTP
 otherwise it's
 
 ```
-iqtree3 -nt <THREADS> -m <ModelFinder_BestModelOutput> -msub nuclear -s <INPUT_ALIGNMENT.fasta> -pre <OUTPUT_PREFIX> -mem <MEMORY_MB>
+iqtree3 -nt <THREADS> -m <ModelFinder_BestModelOutput> -msub nuclear -s <INPUT_ALIGNMENT.fasta> -pre <OUTPUT_PREFIX> -mem <MEMORY_MB> -bb 1000 -alrt 1000
 ```
 
 ---
