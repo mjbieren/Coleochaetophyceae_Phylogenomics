@@ -476,7 +476,7 @@ For further details, visit  [24_ACSR](https://github.com/mjbieren/Coleochaetophy
 
 ## Step 25: Differential expression interpretation for Orthogroups
 In this step, we explore variation in gene expression across Coleochaetophyceae orders using TPM estimates. After quantifying transcripts with Kallisto, the tool [GTVO](https://github.com/mjbieren/GTVO/) is used to summarize TPM values for each orthogroup (HOG), integrating OrthoFinder outputs and renamed headers. While exploratory in nature, this analysis helps identify genes with order-specific expression patterns.
-See [25_Differential_Expression]https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/25_DE) for an overview.
+See [25_Differential_Expression](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/25_DE) for an overview.
 
 ---
 
