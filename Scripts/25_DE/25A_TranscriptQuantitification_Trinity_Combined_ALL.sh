@@ -1,9 +1,9 @@
 #!/bin/bash
 #If you use a singularity command be sure to change all your full paths to mnt as a start path since you have to mount your directory. Change the path accordingly. In this case /data/ is turned into /mnt/
 SINGULARITY_HOME_PATH=${PWD}
-SAMPLE_FILES=[PATH]/Samples_file_baltica.txt #replace the first folder with "mounted"
-TRANSCRIPT_FILE=[PATH]/TRINITY_BALT.Trinity.fasta #replace the first folder with "mounted"
-GENE_TRANS_MAP=[PATH]TRINITY_BALT.Trinity.fasta.gene_trans_map #replace the first folder with "mounted"
+SAMPLE_FILES=[PATH]/<Strain>_file.txt #replace the first folder with "mounted"
+TRANSCRIPT_FILE=[PATH]/<Strain>.Trinity.fasta #replace the first folder with "mounted"
+GENE_TRANS_MAP=[PATH].<Strain>.Trinity.fasta.gene_trans_map #replace the first folder with "mounted"
 EST_METHOD=kallisto #Alignment based: RSEM, Alignment_Free:kallisto|salmon
 THREAD_COUNT=50
 OUT=/home/02_Quantification/
