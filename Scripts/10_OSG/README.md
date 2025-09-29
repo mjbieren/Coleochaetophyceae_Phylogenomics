@@ -4,6 +4,12 @@
 
 By intentionally creating "biased" datasets focused on either the ingroup or outgroup, and then combining them in a later step (e.g., COGS), you can achieve a well-balanced gene set that improves phylogenomic resolution across your entire dataset.
 
+OSG uses all the "Phylogenetic Hierarchical Orthogroup" files (N0.tsv .. Nn.tsv) files within a directory but it is recommended to only use the N0.tsv file instead.
+
+>[!NOTE]
+>From OrthoFinder v3.1.0, N0.tsv is removed from /Phylogenetic_Hierarchical_Orthogroups. Instead, Orthogroups/Orthogroups.tsv contains the orthogroups from N0.tsv.
+
+OSG uses 
 ---
 
 ## 🔍 Purpose in This Pipeline
