@@ -191,6 +191,9 @@ The analysis includes all high-quality, post-decontamination samples, along with
 📂 For a detailed overview of the workflow, parameters, and input structure, see the script and documentation in:
 [Scripts/09_OrthoFinder](https://github.com/mjbieren/Coleochaetophyceae_Phylogenomics/tree/main/Scripts/09_OrthoFinder)
 
+[!NOTE]
+From OrthoFinder v3.1.0, N0.tsv is removed from /Phylogenetic_Hierarchical_Orthogroups. Instead, Orthogroups/Orthogroups.tsv contains the orthogroups from N0.tsv.
+
 ---
 
 ## Step 10: OrthoGroup Sequence Grabber (OSG)
