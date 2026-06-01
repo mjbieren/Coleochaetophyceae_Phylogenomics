@@ -490,4 +490,7 @@ Either with the help of a High-Performance Cluster or a single High-Performance 
 
 
 # Citing
-If you use anything within this repository, please cite coming :)
+If you use anything within this repository
+
+Bierenbroodspot, M. J., Darienko, T., de Vries, S., Delwiche, C. F., Lorenz, M., Ali, Z., Irisarri, I., Pröschold, T., & de Vries, J. (2025). Phylogenomics unveil a recent origin of morphological complexity in Coleochaetophyceae. Current biology : CB, 35(20), 5071–5080.e7. https://doi.org/10.1016/j.cub.2025.08.046
+
